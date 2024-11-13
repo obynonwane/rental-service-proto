@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+package inventory;
+option go_package = "github.com/obynonwane/rental-service-proto/inventory";
+
+message InventoryRequest {
+    string category_id = 1;
+}
+
+service InventoryService {
+    rpc CreateInventory (InventoryRequest) returns (InventoryResponse);
+}
+
+message InventoryResponse {
+    string category_id = 1;
+}
