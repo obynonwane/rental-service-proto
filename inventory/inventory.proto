@@ -1,5 +1,6 @@
 syntax = "proto3";
 
+import "google/protobuf/timestamp.proto";
 package inventory;
 option go_package = "github.com/obynonwane/rental-service-proto/inventory";
 
@@ -7,8 +8,28 @@ message InventoryRequest {
     string category_id = 1;
 }
 
+// User message definition
+message User {
+    string id = 1;
+    string email = 2;
+    string first_name = 3;
+    string last_name = 4;
+    string password = 5; // Optional: Include only if needed
+    bool verified = 6;
+    google.protobuf.Timestamp created_at = 7;
+    google.protobuf.Timestamp updated_at = 8;
+}
+  
+// Response message containing a list of users
+message UserListResponse {
+    repeated User users = 1;
+}
+
+message EmptyRequest {}
+
 service InventoryService {
     rpc CreateInventory (InventoryRequest) returns (InventoryResponse);
+    rpc GetUsers(EmptyRequest) returns (UserListResponse);
 }
 
 message InventoryResponse {
