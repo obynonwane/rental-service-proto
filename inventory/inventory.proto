@@ -4,10 +4,30 @@ import "google/protobuf/timestamp.proto";
 package inventory;
 option go_package = "github.com/obynonwane/rental-service-proto/inventory";
 
+
+
+message EmptyRequest {}
+
+
 message InventoryRequest {
     string category_id = 1;
 }
 
+message InventoryResponse {
+    string category_id = 1;
+}
+
+
+
+service InventoryService {
+    rpc CreateInventory (InventoryRequest) returns (InventoryResponse);
+    rpc GetUsers(EmptyRequest) returns (UserListResponse);
+    rpc CreateProduct (CreateProductRequest) returns (CreateProductResponse);
+}
+
+
+
+//--------------------------------------------MESSAGE FOR GETTING USERS--------------------------------------------------//
 // User message definition
 message User {
     string id = 1;
@@ -24,14 +44,30 @@ message User {
 message UserListResponse {
     repeated User users = 1;
 }
+//--------------------------------------------END MESSAGE FOR GETTING USERS--------------------------------------------------//
 
-message EmptyRequest {}
 
-service InventoryService {
-    rpc CreateInventory (InventoryRequest) returns (InventoryResponse);
-    rpc GetUsers(EmptyRequest) returns (UserListResponse);
+
+
+//--------------------------------------------FOR CREATEING INVENTORY--------------------------------------------------//
+// Message to hold image 
+message ImageDate {
+    bytes image_date = 1;  //Binary data for each image
+    string image_type = 2; // MIME type
 }
 
-message InventoryResponse {
+
+message CreateProductRequest {
     string category_id = 1;
+    string sub_category_id = 2;
+    string name = 3;
+    string description = 4;
+    repeated ImageDate images = 5;
 }
+
+message CreateProductResponse {
+    string message = 1;
+    int32 status_code = 2;
+    bool error = 3;
+}
+//--------------------------------------------END FOR CREATEING INVENTORY--------------------------------------------------//
