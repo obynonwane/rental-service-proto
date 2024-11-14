@@ -9,20 +9,10 @@ option go_package = "github.com/obynonwane/rental-service-proto/inventory";
 message EmptyRequest {}
 
 
-message InventoryRequest {
-    string category_id = 1;
-}
-
-message InventoryResponse {
-    string category_id = 1;
-}
-
-
 
 service InventoryService {
-    rpc CreateInventory (InventoryRequest) returns (InventoryResponse);
     rpc GetUsers(EmptyRequest) returns (UserListResponse);
-    rpc CreateProduct (CreateProductRequest) returns (CreateProductResponse);
+    rpc CreateInventory (CreateInventoryRequest) returns (CreateInventoryResponse);
 }
 
 
@@ -57,7 +47,7 @@ message ImageDate {
 }
 
 
-message CreateProductRequest {
+message CreateInventoryRequest {
     string category_id = 1;
     string sub_category_id = 2;
     string name = 3;
@@ -65,7 +55,7 @@ message CreateProductRequest {
     repeated ImageDate images = 5;
 }
 
-message CreateProductResponse {
+message CreateInventoryResponse {
     string message = 1;
     int32 status_code = 2;
     bool error = 3;

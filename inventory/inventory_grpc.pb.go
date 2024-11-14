@@ -19,18 +19,16 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	InventoryService_CreateInventory_FullMethodName = "/inventory.InventoryService/CreateInventory"
 	InventoryService_GetUsers_FullMethodName        = "/inventory.InventoryService/GetUsers"
-	InventoryService_CreateProduct_FullMethodName   = "/inventory.InventoryService/CreateProduct"
+	InventoryService_CreateInventory_FullMethodName = "/inventory.InventoryService/CreateInventory"
 )
 
 // InventoryServiceClient is the client API for InventoryService service.
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type InventoryServiceClient interface {
-	CreateInventory(ctx context.Context, in *InventoryRequest, opts ...grpc.CallOption) (*InventoryResponse, error)
 	GetUsers(ctx context.Context, in *EmptyRequest, opts ...grpc.CallOption) (*UserListResponse, error)
-	CreateProduct(ctx context.Context, in *CreateProductRequest, opts ...grpc.CallOption) (*CreateProductResponse, error)
+	CreateInventory(ctx context.Context, in *CreateInventoryRequest, opts ...grpc.CallOption) (*CreateInventoryResponse, error)
 }
 
 type inventoryServiceClient struct {
@@ -39,16 +37,6 @@ type inventoryServiceClient struct {
 
 func NewInventoryServiceClient(cc grpc.ClientConnInterface) InventoryServiceClient {
 	return &inventoryServiceClient{cc}
-}
-
-func (c *inventoryServiceClient) CreateInventory(ctx context.Context, in *InventoryRequest, opts ...grpc.CallOption) (*InventoryResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(InventoryResponse)
-	err := c.cc.Invoke(ctx, InventoryService_CreateInventory_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
 }
 
 func (c *inventoryServiceClient) GetUsers(ctx context.Context, in *EmptyRequest, opts ...grpc.CallOption) (*UserListResponse, error) {
@@ -61,10 +49,10 @@ func (c *inventoryServiceClient) GetUsers(ctx context.Context, in *EmptyRequest,
 	return out, nil
 }
 
-func (c *inventoryServiceClient) CreateProduct(ctx context.Context, in *CreateProductRequest, opts ...grpc.CallOption) (*CreateProductResponse, error) {
+func (c *inventoryServiceClient) CreateInventory(ctx context.Context, in *CreateInventoryRequest, opts ...grpc.CallOption) (*CreateInventoryResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(CreateProductResponse)
-	err := c.cc.Invoke(ctx, InventoryService_CreateProduct_FullMethodName, in, out, cOpts...)
+	out := new(CreateInventoryResponse)
+	err := c.cc.Invoke(ctx, InventoryService_CreateInventory_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -75,9 +63,8 @@ func (c *inventoryServiceClient) CreateProduct(ctx context.Context, in *CreatePr
 // All implementations must embed UnimplementedInventoryServiceServer
 // for forward compatibility.
 type InventoryServiceServer interface {
-	CreateInventory(context.Context, *InventoryRequest) (*InventoryResponse, error)
 	GetUsers(context.Context, *EmptyRequest) (*UserListResponse, error)
-	CreateProduct(context.Context, *CreateProductRequest) (*CreateProductResponse, error)
+	CreateInventory(context.Context, *CreateInventoryRequest) (*CreateInventoryResponse, error)
 	mustEmbedUnimplementedInventoryServiceServer()
 }
 
@@ -88,14 +75,11 @@ type InventoryServiceServer interface {
 // pointer dereference when methods are called.
 type UnimplementedInventoryServiceServer struct{}
 
-func (UnimplementedInventoryServiceServer) CreateInventory(context.Context, *InventoryRequest) (*InventoryResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method CreateInventory not implemented")
-}
 func (UnimplementedInventoryServiceServer) GetUsers(context.Context, *EmptyRequest) (*UserListResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetUsers not implemented")
 }
-func (UnimplementedInventoryServiceServer) CreateProduct(context.Context, *CreateProductRequest) (*CreateProductResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method CreateProduct not implemented")
+func (UnimplementedInventoryServiceServer) CreateInventory(context.Context, *CreateInventoryRequest) (*CreateInventoryResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateInventory not implemented")
 }
 func (UnimplementedInventoryServiceServer) mustEmbedUnimplementedInventoryServiceServer() {}
 func (UnimplementedInventoryServiceServer) testEmbeddedByValue()                          {}
@@ -118,24 +102,6 @@ func RegisterInventoryServiceServer(s grpc.ServiceRegistrar, srv InventoryServic
 	s.RegisterService(&InventoryService_ServiceDesc, srv)
 }
 
-func _InventoryService_CreateInventory_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(InventoryRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(InventoryServiceServer).CreateInventory(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: InventoryService_CreateInventory_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(InventoryServiceServer).CreateInventory(ctx, req.(*InventoryRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
 func _InventoryService_GetUsers_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(EmptyRequest)
 	if err := dec(in); err != nil {
@@ -154,20 +120,20 @@ func _InventoryService_GetUsers_Handler(srv interface{}, ctx context.Context, de
 	return interceptor(ctx, in, info, handler)
 }
 
-func _InventoryService_CreateProduct_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(CreateProductRequest)
+func _InventoryService_CreateInventory_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(CreateInventoryRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(InventoryServiceServer).CreateProduct(ctx, in)
+		return srv.(InventoryServiceServer).CreateInventory(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: InventoryService_CreateProduct_FullMethodName,
+		FullMethod: InventoryService_CreateInventory_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(InventoryServiceServer).CreateProduct(ctx, req.(*CreateProductRequest))
+		return srv.(InventoryServiceServer).CreateInventory(ctx, req.(*CreateInventoryRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -180,16 +146,12 @@ var InventoryService_ServiceDesc = grpc.ServiceDesc{
 	HandlerType: (*InventoryServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
-			MethodName: "CreateInventory",
-			Handler:    _InventoryService_CreateInventory_Handler,
-		},
-		{
 			MethodName: "GetUsers",
 			Handler:    _InventoryService_GetUsers_Handler,
 		},
 		{
-			MethodName: "CreateProduct",
-			Handler:    _InventoryService_CreateProduct_Handler,
+			MethodName: "CreateInventory",
+			Handler:    _InventoryService_CreateInventory_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
