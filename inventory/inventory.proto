@@ -42,7 +42,7 @@ message UserListResponse {
 //--------------------------------------------FOR CREATEING INVENTORY--------------------------------------------------//
 // Message to hold image 
 message ImageData {
-    bytes image_date = 1;  //Binary data for each image
+    bytes image_data = 1;  //Binary data for each image
     string image_type = 2; // MIME type
 }
 
