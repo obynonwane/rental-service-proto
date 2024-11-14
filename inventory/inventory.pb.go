@@ -208,7 +208,7 @@ func (x *UserListResponse) GetUsers() []*User {
 
 // --------------------------------------------FOR CREATEING INVENTORY--------------------------------------------------//
 // Message to hold image
-type ImageDate struct {
+type ImageData struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
@@ -217,20 +217,20 @@ type ImageDate struct {
 	ImageType string `protobuf:"bytes,2,opt,name=image_type,json=imageType,proto3" json:"image_type,omitempty"` // MIME type
 }
 
-func (x *ImageDate) Reset() {
-	*x = ImageDate{}
+func (x *ImageData) Reset() {
+	*x = ImageData{}
 	mi := &file_inventory_inventory_proto_msgTypes[3]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *ImageDate) String() string {
+func (x *ImageData) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*ImageDate) ProtoMessage() {}
+func (*ImageData) ProtoMessage() {}
 
-func (x *ImageDate) ProtoReflect() protoreflect.Message {
+func (x *ImageData) ProtoReflect() protoreflect.Message {
 	mi := &file_inventory_inventory_proto_msgTypes[3]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -242,19 +242,19 @@ func (x *ImageDate) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use ImageDate.ProtoReflect.Descriptor instead.
-func (*ImageDate) Descriptor() ([]byte, []int) {
+// Deprecated: Use ImageData.ProtoReflect.Descriptor instead.
+func (*ImageData) Descriptor() ([]byte, []int) {
 	return file_inventory_inventory_proto_rawDescGZIP(), []int{3}
 }
 
-func (x *ImageDate) GetImageDate() []byte {
+func (x *ImageData) GetImageDate() []byte {
 	if x != nil {
 		return x.ImageDate
 	}
 	return nil
 }
 
-func (x *ImageDate) GetImageType() string {
+func (x *ImageData) GetImageType() string {
 	if x != nil {
 		return x.ImageType
 	}
@@ -270,7 +270,7 @@ type CreateInventoryRequest struct {
 	SubCategoryId string       `protobuf:"bytes,2,opt,name=sub_category_id,json=subCategoryId,proto3" json:"sub_category_id,omitempty"`
 	Name          string       `protobuf:"bytes,3,opt,name=name,proto3" json:"name,omitempty"`
 	Description   string       `protobuf:"bytes,4,opt,name=description,proto3" json:"description,omitempty"`
-	Images        []*ImageDate `protobuf:"bytes,5,rep,name=images,proto3" json:"images,omitempty"`
+	Images        []*ImageData `protobuf:"bytes,5,rep,name=images,proto3" json:"images,omitempty"`
 }
 
 func (x *CreateInventoryRequest) Reset() {
@@ -331,7 +331,7 @@ func (x *CreateInventoryRequest) GetDescription() string {
 	return ""
 }
 
-func (x *CreateInventoryRequest) GetImages() []*ImageDate {
+func (x *CreateInventoryRequest) GetImages() []*ImageData {
 	if x != nil {
 		return x.Images
 	}
@@ -429,7 +429,7 @@ var file_inventory_inventory_proto_rawDesc = []byte{
 	0x6f, 0x6e, 0x73, 0x65, 0x12, 0x25, 0x0a, 0x05, 0x75, 0x73, 0x65, 0x72, 0x73, 0x18, 0x01, 0x20,
 	0x03, 0x28, 0x0b, 0x32, 0x0f, 0x2e, 0x69, 0x6e, 0x76, 0x65, 0x6e, 0x74, 0x6f, 0x72, 0x79, 0x2e,
 	0x55, 0x73, 0x65, 0x72, 0x52, 0x05, 0x75, 0x73, 0x65, 0x72, 0x73, 0x22, 0x49, 0x0a, 0x09, 0x49,
-	0x6d, 0x61, 0x67, 0x65, 0x44, 0x61, 0x74, 0x65, 0x12, 0x1d, 0x0a, 0x0a, 0x69, 0x6d, 0x61, 0x67,
+	0x6d, 0x61, 0x67, 0x65, 0x44, 0x61, 0x74, 0x61, 0x12, 0x1d, 0x0a, 0x0a, 0x69, 0x6d, 0x61, 0x67,
 	0x65, 0x5f, 0x64, 0x61, 0x74, 0x65, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0c, 0x52, 0x09, 0x69, 0x6d,
 	0x61, 0x67, 0x65, 0x44, 0x61, 0x74, 0x65, 0x12, 0x1d, 0x0a, 0x0a, 0x69, 0x6d, 0x61, 0x67, 0x65,
 	0x5f, 0x74, 0x79, 0x70, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x09, 0x69, 0x6d, 0x61,
@@ -445,7 +445,7 @@ var file_inventory_inventory_proto_rawDesc = []byte{
 	0x01, 0x28, 0x09, 0x52, 0x0b, 0x64, 0x65, 0x73, 0x63, 0x72, 0x69, 0x70, 0x74, 0x69, 0x6f, 0x6e,
 	0x12, 0x2c, 0x0a, 0x06, 0x69, 0x6d, 0x61, 0x67, 0x65, 0x73, 0x18, 0x05, 0x20, 0x03, 0x28, 0x0b,
 	0x32, 0x14, 0x2e, 0x69, 0x6e, 0x76, 0x65, 0x6e, 0x74, 0x6f, 0x72, 0x79, 0x2e, 0x49, 0x6d, 0x61,
-	0x67, 0x65, 0x44, 0x61, 0x74, 0x65, 0x52, 0x06, 0x69, 0x6d, 0x61, 0x67, 0x65, 0x73, 0x22, 0x6a,
+	0x67, 0x65, 0x44, 0x61, 0x74, 0x61, 0x52, 0x06, 0x69, 0x6d, 0x61, 0x67, 0x65, 0x73, 0x22, 0x6a,
 	0x0a, 0x17, 0x43, 0x72, 0x65, 0x61, 0x74, 0x65, 0x49, 0x6e, 0x76, 0x65, 0x6e, 0x74, 0x6f, 0x72,
 	0x79, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x18, 0x0a, 0x07, 0x6d, 0x65, 0x73,
 	0x73, 0x61, 0x67, 0x65, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x07, 0x6d, 0x65, 0x73, 0x73,
@@ -487,7 +487,7 @@ var file_inventory_inventory_proto_goTypes = []any{
 	(*EmptyRequest)(nil),            // 0: inventory.EmptyRequest
 	(*User)(nil),                    // 1: inventory.User
 	(*UserListResponse)(nil),        // 2: inventory.UserListResponse
-	(*ImageDate)(nil),               // 3: inventory.ImageDate
+	(*ImageData)(nil),               // 3: inventory.ImageData
 	(*CreateInventoryRequest)(nil),  // 4: inventory.CreateInventoryRequest
 	(*CreateInventoryResponse)(nil), // 5: inventory.CreateInventoryResponse
 	(*timestamppb.Timestamp)(nil),   // 6: google.protobuf.Timestamp
@@ -496,7 +496,7 @@ var file_inventory_inventory_proto_depIdxs = []int32{
 	6, // 0: inventory.User.created_at:type_name -> google.protobuf.Timestamp
 	6, // 1: inventory.User.updated_at:type_name -> google.protobuf.Timestamp
 	1, // 2: inventory.UserListResponse.users:type_name -> inventory.User
-	3, // 3: inventory.CreateInventoryRequest.images:type_name -> inventory.ImageDate
+	3, // 3: inventory.CreateInventoryRequest.images:type_name -> inventory.ImageData
 	0, // 4: inventory.InventoryService.GetUsers:input_type -> inventory.EmptyRequest
 	4, // 5: inventory.InventoryService.CreateInventory:input_type -> inventory.CreateInventoryRequest
 	2, // 6: inventory.InventoryService.GetUsers:output_type -> inventory.UserListResponse

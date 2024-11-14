@@ -41,7 +41,7 @@ message UserListResponse {
 
 //--------------------------------------------FOR CREATEING INVENTORY--------------------------------------------------//
 // Message to hold image 
-message ImageDate {
+message ImageData {
     bytes image_date = 1;  //Binary data for each image
     string image_type = 2; // MIME type
 }
@@ -52,7 +52,7 @@ message CreateInventoryRequest {
     string sub_category_id = 2;
     string name = 3;
     string description = 4;
-    repeated ImageDate images = 5;
+    repeated ImageData images = 5;
 }
 
 message CreateInventoryResponse {
