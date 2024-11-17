@@ -19,10 +19,11 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	InventoryService_GetUsers_FullMethodName        = "/inventory.InventoryService/GetUsers"
-	InventoryService_CreateInventory_FullMethodName = "/inventory.InventoryService/CreateInventory"
-	InventoryService_GetCategories_FullMethodName   = "/inventory.InventoryService/GetCategories"
-	InventoryService_GetCategory_FullMethodName     = "/inventory.InventoryService/GetCategory"
+	InventoryService_GetUsers_FullMethodName         = "/inventory.InventoryService/GetUsers"
+	InventoryService_CreateInventory_FullMethodName  = "/inventory.InventoryService/CreateInventory"
+	InventoryService_GetCategories_FullMethodName    = "/inventory.InventoryService/GetCategories"
+	InventoryService_GetSubCategories_FullMethodName = "/inventory.InventoryService/GetSubCategories"
+	InventoryService_GetCategory_FullMethodName      = "/inventory.InventoryService/GetCategory"
 )
 
 // InventoryServiceClient is the client API for InventoryService service.
@@ -32,6 +33,7 @@ type InventoryServiceClient interface {
 	GetUsers(ctx context.Context, in *EmptyRequest, opts ...grpc.CallOption) (*UserListResponse, error)
 	CreateInventory(ctx context.Context, in *CreateInventoryRequest, opts ...grpc.CallOption) (*CreateInventoryResponse, error)
 	GetCategories(ctx context.Context, in *EmptyRequest, opts ...grpc.CallOption) (*AllCategoryResponse, error)
+	GetSubCategories(ctx context.Context, in *EmptyRequest, opts ...grpc.CallOption) (*AllSubCategoryResponse, error)
 	GetCategory(ctx context.Context, in *ResourceId, opts ...grpc.CallOption) (*CategoryResponse, error)
 }
 
@@ -73,6 +75,16 @@ func (c *inventoryServiceClient) GetCategories(ctx context.Context, in *EmptyReq
 	return out, nil
 }
 
+func (c *inventoryServiceClient) GetSubCategories(ctx context.Context, in *EmptyRequest, opts ...grpc.CallOption) (*AllSubCategoryResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(AllSubCategoryResponse)
+	err := c.cc.Invoke(ctx, InventoryService_GetSubCategories_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 func (c *inventoryServiceClient) GetCategory(ctx context.Context, in *ResourceId, opts ...grpc.CallOption) (*CategoryResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(CategoryResponse)
@@ -90,6 +102,7 @@ type InventoryServiceServer interface {
 	GetUsers(context.Context, *EmptyRequest) (*UserListResponse, error)
 	CreateInventory(context.Context, *CreateInventoryRequest) (*CreateInventoryResponse, error)
 	GetCategories(context.Context, *EmptyRequest) (*AllCategoryResponse, error)
+	GetSubCategories(context.Context, *EmptyRequest) (*AllSubCategoryResponse, error)
 	GetCategory(context.Context, *ResourceId) (*CategoryResponse, error)
 	mustEmbedUnimplementedInventoryServiceServer()
 }
@@ -109,6 +122,9 @@ func (UnimplementedInventoryServiceServer) CreateInventory(context.Context, *Cre
 }
 func (UnimplementedInventoryServiceServer) GetCategories(context.Context, *EmptyRequest) (*AllCategoryResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetCategories not implemented")
+}
+func (UnimplementedInventoryServiceServer) GetSubCategories(context.Context, *EmptyRequest) (*AllSubCategoryResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetSubCategories not implemented")
 }
 func (UnimplementedInventoryServiceServer) GetCategory(context.Context, *ResourceId) (*CategoryResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetCategory not implemented")
@@ -188,6 +204,24 @@ func _InventoryService_GetCategories_Handler(srv interface{}, ctx context.Contex
 	return interceptor(ctx, in, info, handler)
 }
 
+func _InventoryService_GetSubCategories_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(EmptyRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(InventoryServiceServer).GetSubCategories(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: InventoryService_GetSubCategories_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(InventoryServiceServer).GetSubCategories(ctx, req.(*EmptyRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 func _InventoryService_GetCategory_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(ResourceId)
 	if err := dec(in); err != nil {
@@ -224,6 +258,10 @@ var InventoryService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "GetCategories",
 			Handler:    _InventoryService_GetCategories_Handler,
+		},
+		{
+			MethodName: "GetSubCategories",
+			Handler:    _InventoryService_GetSubCategories_Handler,
 		},
 		{
 			MethodName: "GetCategory",

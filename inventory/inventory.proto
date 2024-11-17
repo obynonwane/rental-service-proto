@@ -16,6 +16,7 @@ service InventoryService {
     rpc GetUsers(EmptyRequest) returns (UserListResponse);
     rpc CreateInventory (CreateInventoryRequest) returns (CreateInventoryResponse);
     rpc GetCategories (EmptyRequest) returns (AllCategoryResponse);
+    rpc GetSubCategories (EmptyRequest) returns (AllSubCategoryResponse);
     rpc GetCategory (ResourceId) returns (CategoryResponse);
 }
 
