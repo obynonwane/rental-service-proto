@@ -32,6 +32,8 @@ message User {
     bool verified = 6;
     google.protobuf.Timestamp created_at = 7;
     google.protobuf.Timestamp updated_at = 8;
+    string created_at_human = 9;              // Human-readable timestamp
+    string updated_at_human = 10;              // Human-readable timestamp
 }
   
 // Response message containing a list of users
@@ -75,6 +77,8 @@ message CategoryResponse{
     string icon_class = 4;
     google.protobuf.Timestamp created_at = 5;
     google.protobuf.Timestamp updated_at = 6;
+    string created_at_human = 7;              // Human-readable timestamp
+    string updated_at_human = 8;              // Human-readable timestamp
 }
 
 message SubCategoryResponse{
@@ -85,6 +89,8 @@ message SubCategoryResponse{
     string icon_class = 5;
     google.protobuf.Timestamp created_at = 6;
     google.protobuf.Timestamp updated_at = 7;
+    string created_at_human = 8;              // Human-readable timestamp
+    string updated_at_human = 9;              // Human-readable timestamp
 }
 
 message AllCategoryResponse {
