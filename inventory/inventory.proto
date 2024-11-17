@@ -8,11 +8,15 @@ option go_package = "github.com/obynonwane/rental-service-proto/inventory";
 
 message EmptyRequest {}
 
-
+message ResourceId {
+    string id = 1;
+}
 
 service InventoryService {
     rpc GetUsers(EmptyRequest) returns (UserListResponse);
     rpc CreateInventory (CreateInventoryRequest) returns (CreateInventoryResponse);
+    rpc GetCategories (EmptyRequest) returns (AllCategoryResponse);
+    rpc GetCategory (ResourceId) returns (CategoryResponse);
 }
 
 
@@ -61,3 +65,34 @@ message CreateInventoryResponse {
     bool error = 3;
 }
 //--------------------------------------------END FOR CREATEING INVENTORY--------------------------------------------------//
+
+
+//--------------------------------------------INVENTORY CATEGORY MESSAGE--------------------------------------------------//
+message CategoryResponse{
+    string id = 1;
+    string name = 2;
+    string description = 3;
+    string icon_class = 4;
+    google.protobuf.Timestamp created_at = 5;
+    google.protobuf.Timestamp updated_at = 6;
+}
+
+message SubCategoryResponse{
+    string id = 1;
+    string category_id = 2;
+    string name = 3;
+    string description = 4;
+    string icon_class = 5;
+    google.protobuf.Timestamp created_at = 6;
+    google.protobuf.Timestamp updated_at = 7;
+}
+
+message AllCategoryResponse {
+    repeated CategoryResponse categories = 1;
+}
+
+message AllSubCategoryResponse {
+    repeated SubCategoryResponse subcategories = 1;
+}
+
+//--------------------------------------------END INVENTORY CATEGORY MESSAGE--------------------------------------------------//
