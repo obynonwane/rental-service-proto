@@ -65,7 +65,8 @@ message CreateInventoryRequest {
 
 message CreateInventoryResponse {
     string message = 1;
-    bool error = 2;
+    int32 status_code = 2;
+    bool error = 3;
 }
 //--------------------------------------------END FOR CREATEING INVENTORY--------------------------------------------------//
 
@@ -80,10 +81,8 @@ message CategoryResponse{
     google.protobuf.Timestamp updated_at = 6;
     string created_at_human = 7;              // Human-readable timestamp
     string updated_at_human = 8;              // Human-readable timestamp
-   
+    int32 status_code = 9;
 }
-
-
 
 message SubCategoryResponse{
     string id = 1;
@@ -95,15 +94,17 @@ message SubCategoryResponse{
     google.protobuf.Timestamp updated_at = 7;
     string created_at_human = 8;              // Human-readable timestamp
     string updated_at_human = 9;              // Human-readable timestamp
+    int32 status_code = 10;
 }
 
 message AllCategoryResponse {
     repeated CategoryResponse categories = 1;
-   
+    int32 status_code = 2;
 }
 
 message AllSubCategoryResponse {
     repeated SubCategoryResponse subcategories = 1;
+    int32 status_code = 2;
 }
 
 //--------------------------------------------END INVENTORY CATEGORY MESSAGE--------------------------------------------------//
