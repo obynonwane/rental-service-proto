@@ -18,6 +18,7 @@ service InventoryService {
     rpc GetCategories (EmptyRequest) returns (AllCategoryResponse);
     rpc GetSubCategories (EmptyRequest) returns (AllSubCategoryResponse);
     rpc GetCategory (ResourceId) returns (CategoryResponse);
+    rpc GetCategorySubcategories (ResourceId) returns (AllSubCategoryResponse);
 }
 
 
