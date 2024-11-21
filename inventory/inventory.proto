@@ -19,6 +19,7 @@ service InventoryService {
     rpc GetSubCategories (EmptyRequest) returns (AllSubCategoryResponse);
     rpc GetCategory (ResourceId) returns (CategoryResponse);
     rpc GetCategorySubcategories (ResourceId) returns (AllSubCategoryResponse);
+    rpc RateInventory (InventoryRatingRequest) returns (InventoryRatingResponse);
 }
 
 
@@ -108,4 +109,23 @@ message AllSubCategoryResponse {
     int32 status_code = 2;
 }
 
-//--------------------------------------------END INVENTORY CATEGORY MESSAGE--------------------------------------------------//
+//--------------------------------------------INVENTORY RATING MESSAGE--------------------------------------------------//
+
+message InventoryRatingRequest {
+    string inventory_id = 1;
+    int32 rating  = 2;
+    string comment = 3;
+    string rater_id = 4;
+}
+
+message InventoryRatingResponse {
+    string id = 1;
+    string inventory_id = 2;
+    string rater_id = 3;
+    int32 rating  = 4;
+    string comment = 5;
+    google.protobuf.Timestamp updated_at = 6;
+    google.protobuf.Timestamp created_at = 7;
+    string created_at_human = 8;              // Human-readable timestamp
+    string updated_at_human = 9;     
+}

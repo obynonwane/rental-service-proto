@@ -25,6 +25,7 @@ const (
 	InventoryService_GetSubCategories_FullMethodName         = "/inventory.InventoryService/GetSubCategories"
 	InventoryService_GetCategory_FullMethodName              = "/inventory.InventoryService/GetCategory"
 	InventoryService_GetCategorySubcategories_FullMethodName = "/inventory.InventoryService/GetCategorySubcategories"
+	InventoryService_RateInventory_FullMethodName            = "/inventory.InventoryService/RateInventory"
 )
 
 // InventoryServiceClient is the client API for InventoryService service.
@@ -37,6 +38,7 @@ type InventoryServiceClient interface {
 	GetSubCategories(ctx context.Context, in *EmptyRequest, opts ...grpc.CallOption) (*AllSubCategoryResponse, error)
 	GetCategory(ctx context.Context, in *ResourceId, opts ...grpc.CallOption) (*CategoryResponse, error)
 	GetCategorySubcategories(ctx context.Context, in *ResourceId, opts ...grpc.CallOption) (*AllSubCategoryResponse, error)
+	RateInventory(ctx context.Context, in *InventoryRatingRequest, opts ...grpc.CallOption) (*InventoryRatingResponse, error)
 }
 
 type inventoryServiceClient struct {
@@ -107,6 +109,16 @@ func (c *inventoryServiceClient) GetCategorySubcategories(ctx context.Context, i
 	return out, nil
 }
 
+func (c *inventoryServiceClient) RateInventory(ctx context.Context, in *InventoryRatingRequest, opts ...grpc.CallOption) (*InventoryRatingResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(InventoryRatingResponse)
+	err := c.cc.Invoke(ctx, InventoryService_RateInventory_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // InventoryServiceServer is the server API for InventoryService service.
 // All implementations must embed UnimplementedInventoryServiceServer
 // for forward compatibility.
@@ -117,6 +129,7 @@ type InventoryServiceServer interface {
 	GetSubCategories(context.Context, *EmptyRequest) (*AllSubCategoryResponse, error)
 	GetCategory(context.Context, *ResourceId) (*CategoryResponse, error)
 	GetCategorySubcategories(context.Context, *ResourceId) (*AllSubCategoryResponse, error)
+	RateInventory(context.Context, *InventoryRatingRequest) (*InventoryRatingResponse, error)
 	mustEmbedUnimplementedInventoryServiceServer()
 }
 
@@ -144,6 +157,9 @@ func (UnimplementedInventoryServiceServer) GetCategory(context.Context, *Resourc
 }
 func (UnimplementedInventoryServiceServer) GetCategorySubcategories(context.Context, *ResourceId) (*AllSubCategoryResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetCategorySubcategories not implemented")
+}
+func (UnimplementedInventoryServiceServer) RateInventory(context.Context, *InventoryRatingRequest) (*InventoryRatingResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method RateInventory not implemented")
 }
 func (UnimplementedInventoryServiceServer) mustEmbedUnimplementedInventoryServiceServer() {}
 func (UnimplementedInventoryServiceServer) testEmbeddedByValue()                          {}
@@ -274,6 +290,24 @@ func _InventoryService_GetCategorySubcategories_Handler(srv interface{}, ctx con
 	return interceptor(ctx, in, info, handler)
 }
 
+func _InventoryService_RateInventory_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(InventoryRatingRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(InventoryServiceServer).RateInventory(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: InventoryService_RateInventory_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(InventoryServiceServer).RateInventory(ctx, req.(*InventoryRatingRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // InventoryService_ServiceDesc is the grpc.ServiceDesc for InventoryService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -304,6 +338,10 @@ var InventoryService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "GetCategorySubcategories",
 			Handler:    _InventoryService_GetCategorySubcategories_Handler,
+		},
+		{
+			MethodName: "RateInventory",
+			Handler:    _InventoryService_RateInventory_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
