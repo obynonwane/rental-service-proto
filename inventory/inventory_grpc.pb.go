@@ -40,7 +40,7 @@ type InventoryServiceClient interface {
 	GetCategory(ctx context.Context, in *ResourceId, opts ...grpc.CallOption) (*CategoryResponse, error)
 	GetCategorySubcategories(ctx context.Context, in *ResourceId, opts ...grpc.CallOption) (*AllSubCategoryResponse, error)
 	RateInventory(ctx context.Context, in *InventoryRatingRequest, opts ...grpc.CallOption) (*InventoryRatingResponse, error)
-	RateUser(ctx context.Context, in *InventoryRatingRequest, opts ...grpc.CallOption) (*InventoryRatingResponse, error)
+	RateUser(ctx context.Context, in *UserRatingRequest, opts ...grpc.CallOption) (*UserRatingResponse, error)
 }
 
 type inventoryServiceClient struct {
@@ -121,9 +121,9 @@ func (c *inventoryServiceClient) RateInventory(ctx context.Context, in *Inventor
 	return out, nil
 }
 
-func (c *inventoryServiceClient) RateUser(ctx context.Context, in *InventoryRatingRequest, opts ...grpc.CallOption) (*InventoryRatingResponse, error) {
+func (c *inventoryServiceClient) RateUser(ctx context.Context, in *UserRatingRequest, opts ...grpc.CallOption) (*UserRatingResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(InventoryRatingResponse)
+	out := new(UserRatingResponse)
 	err := c.cc.Invoke(ctx, InventoryService_RateUser_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
@@ -142,7 +142,7 @@ type InventoryServiceServer interface {
 	GetCategory(context.Context, *ResourceId) (*CategoryResponse, error)
 	GetCategorySubcategories(context.Context, *ResourceId) (*AllSubCategoryResponse, error)
 	RateInventory(context.Context, *InventoryRatingRequest) (*InventoryRatingResponse, error)
-	RateUser(context.Context, *InventoryRatingRequest) (*InventoryRatingResponse, error)
+	RateUser(context.Context, *UserRatingRequest) (*UserRatingResponse, error)
 	mustEmbedUnimplementedInventoryServiceServer()
 }
 
@@ -174,7 +174,7 @@ func (UnimplementedInventoryServiceServer) GetCategorySubcategories(context.Cont
 func (UnimplementedInventoryServiceServer) RateInventory(context.Context, *InventoryRatingRequest) (*InventoryRatingResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method RateInventory not implemented")
 }
-func (UnimplementedInventoryServiceServer) RateUser(context.Context, *InventoryRatingRequest) (*InventoryRatingResponse, error) {
+func (UnimplementedInventoryServiceServer) RateUser(context.Context, *UserRatingRequest) (*UserRatingResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method RateUser not implemented")
 }
 func (UnimplementedInventoryServiceServer) mustEmbedUnimplementedInventoryServiceServer() {}
@@ -325,7 +325,7 @@ func _InventoryService_RateInventory_Handler(srv interface{}, ctx context.Contex
 }
 
 func _InventoryService_RateUser_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(InventoryRatingRequest)
+	in := new(UserRatingRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -337,7 +337,7 @@ func _InventoryService_RateUser_Handler(srv interface{}, ctx context.Context, de
 		FullMethod: InventoryService_RateUser_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(InventoryServiceServer).RateUser(ctx, req.(*InventoryRatingRequest))
+		return srv.(InventoryServiceServer).RateUser(ctx, req.(*UserRatingRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
