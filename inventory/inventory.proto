@@ -21,6 +21,7 @@ service InventoryService {
     rpc GetCategorySubcategories (ResourceId) returns (AllSubCategoryResponse);
     rpc RateInventory (InventoryRatingRequest) returns (InventoryRatingResponse);
     rpc RateUser (UserRatingRequest) returns (UserRatingResponse);
+    rpc GetInventoryByID (UserRatingRequest) returns (UserRatingResponse);
 }
 
 
@@ -151,3 +152,29 @@ message UserRatingResponse {
     string created_at_human = 8;              // Human-readable timestamp
     string updated_at_human = 9;     
 }
+
+message InventoryResponseDetail{
+    InventoryResponse inventory = 1;
+}
+
+message InventoryResponse{
+    string id = 1;
+    string name = 2;
+    string description = 3;
+    string user_id = 4;
+    string category_id = 5;
+    string subcategory_id = 6;
+    bool promoted = 7;
+    bool deactivated = 8;
+    google.protobuf.Timestamp updated_at = 9;
+    google.protobuf.Timestamp created_at = 10;
+    string created_at_human = 11;             
+    string updated_at_human = 12;     
+}
+
+// return the inventory 
+// return the user 
+// return the average rating for inventory 
+// return the 5 most recent inventory rating
+// return the average rating for user 
+// return the 5 most recent user rating
