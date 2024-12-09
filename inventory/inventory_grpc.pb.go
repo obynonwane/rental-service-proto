@@ -42,7 +42,7 @@ type InventoryServiceClient interface {
 	GetCategorySubcategories(ctx context.Context, in *ResourceId, opts ...grpc.CallOption) (*AllSubCategoryResponse, error)
 	RateInventory(ctx context.Context, in *InventoryRatingRequest, opts ...grpc.CallOption) (*InventoryRatingResponse, error)
 	RateUser(ctx context.Context, in *UserRatingRequest, opts ...grpc.CallOption) (*UserRatingResponse, error)
-	GetInventoryByID(ctx context.Context, in *ResourceId, opts ...grpc.CallOption) (*InventoryResponse, error)
+	GetInventoryByID(ctx context.Context, in *ResourceId, opts ...grpc.CallOption) (*InventoryResponseDetail, error)
 }
 
 type inventoryServiceClient struct {
@@ -133,9 +133,9 @@ func (c *inventoryServiceClient) RateUser(ctx context.Context, in *UserRatingReq
 	return out, nil
 }
 
-func (c *inventoryServiceClient) GetInventoryByID(ctx context.Context, in *ResourceId, opts ...grpc.CallOption) (*InventoryResponse, error) {
+func (c *inventoryServiceClient) GetInventoryByID(ctx context.Context, in *ResourceId, opts ...grpc.CallOption) (*InventoryResponseDetail, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(InventoryResponse)
+	out := new(InventoryResponseDetail)
 	err := c.cc.Invoke(ctx, InventoryService_GetInventoryByID_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
@@ -155,7 +155,7 @@ type InventoryServiceServer interface {
 	GetCategorySubcategories(context.Context, *ResourceId) (*AllSubCategoryResponse, error)
 	RateInventory(context.Context, *InventoryRatingRequest) (*InventoryRatingResponse, error)
 	RateUser(context.Context, *UserRatingRequest) (*UserRatingResponse, error)
-	GetInventoryByID(context.Context, *ResourceId) (*InventoryResponse, error)
+	GetInventoryByID(context.Context, *ResourceId) (*InventoryResponseDetail, error)
 	mustEmbedUnimplementedInventoryServiceServer()
 }
 
@@ -190,7 +190,7 @@ func (UnimplementedInventoryServiceServer) RateInventory(context.Context, *Inven
 func (UnimplementedInventoryServiceServer) RateUser(context.Context, *UserRatingRequest) (*UserRatingResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method RateUser not implemented")
 }
-func (UnimplementedInventoryServiceServer) GetInventoryByID(context.Context, *ResourceId) (*InventoryResponse, error) {
+func (UnimplementedInventoryServiceServer) GetInventoryByID(context.Context, *ResourceId) (*InventoryResponseDetail, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetInventoryByID not implemented")
 }
 func (UnimplementedInventoryServiceServer) mustEmbedUnimplementedInventoryServiceServer() {}
