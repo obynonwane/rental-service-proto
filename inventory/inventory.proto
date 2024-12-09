@@ -21,7 +21,7 @@ service InventoryService {
     rpc GetCategorySubcategories (ResourceId) returns (AllSubCategoryResponse);
     rpc RateInventory (InventoryRatingRequest) returns (InventoryRatingResponse);
     rpc RateUser (UserRatingRequest) returns (UserRatingResponse);
-    rpc GetInventoryByID (UserRatingRequest) returns (UserRatingResponse);
+    rpc GetInventoryByID (ResourceId) returns (InventoryResponse);
 }
 
 
