@@ -157,6 +157,8 @@ message UserRatingResponse {
 message InventoryResponseDetail{
     InventoryResponse inventory = 1;
     User user = 2;
+    repeated UserRatingResponse userRatings = 3;
+
 }
 
 message InventoryResponse{
