@@ -12,6 +12,18 @@ message ResourceId {
     string id = 1;
 }
 
+message PaginationParam {
+    int32 page = 1;
+    int32 limit = 2;
+}
+
+
+message GetResourceWithIDAndPagination {
+    ResourceId id = 1;
+    PaginationParam pagination = 2;
+}
+
+
 service InventoryService {
     rpc GetUsers(EmptyRequest) returns (UserListResponse);
     rpc CreateInventory (CreateInventoryRequest) returns (CreateInventoryResponse);
@@ -172,6 +184,12 @@ message InventoryResponse{
     google.protobuf.Timestamp created_at = 10;
     string created_at_human = 11;             
     string updated_at_human = 12;     
+}
+
+
+message  UserRatingsResponse{
+  repeated UserRatingResponse userRatings = 1;
+  PaginationParam pageDetail = 2;
 }
 
 // return the inventory 
