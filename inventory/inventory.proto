@@ -33,12 +33,13 @@ message User {
     string email = 2;
     string first_name = 3;
     string last_name = 4;
-    string password = 5; // Optional: Include only if needed
-    bool verified = 6;
-    google.protobuf.Timestamp created_at = 7;
-    google.protobuf.Timestamp updated_at = 8;
-    string created_at_human = 9;              // Human-readable timestamp
-    string updated_at_human = 10;              // Human-readable timestamp
+    string phone = 5;
+    string password = 6; // Optional: Include only if needed
+    bool verified = 7;
+    google.protobuf.Timestamp created_at = 8;
+    google.protobuf.Timestamp updated_at = 9;
+    string created_at_human = 10;              // Human-readable timestamp
+    string updated_at_human = 11;              // Human-readable timestamp
 }
   
 // Response message containing a list of users
