@@ -15,6 +15,7 @@ message ResourceId {
 message PaginationParam {
     int32 page = 1;
     int32 limit = 2;
+    int32 total = 3;
 }
 
 
