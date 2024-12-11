@@ -15,7 +15,6 @@ message ResourceId {
 message PaginationParam {
     int32 page = 1;
     int32 limit = 2;
-    int32 total = 3;
 }
 
 
@@ -192,6 +191,7 @@ message InventoryResponse{
 message  UserRatingsResponse{
   repeated UserRatingResponse userRatings = 1;
   PaginationParam pageDetail = 2;
+  int32 total = 3;
 }
 
 // return the inventory 
