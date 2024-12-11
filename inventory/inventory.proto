@@ -34,6 +34,7 @@ service InventoryService {
     rpc RateInventory (InventoryRatingRequest) returns (InventoryRatingResponse);
     rpc RateUser (UserRatingRequest) returns (UserRatingResponse);
     rpc GetInventoryByID (ResourceId) returns (InventoryResponseDetail);
+    rpc GetUserRatings (GetResourceWithIDAndPagination) returns (UserRatingsResponse);
 }
 
 
@@ -197,4 +198,4 @@ message  UserRatingsResponse{
 // return the average rating for inventory 
 // return the 5 most recent inventory rating
 // return the average rating for user 
-// return the 5 most recent user rating
+// return the 5 most recent user rating  
