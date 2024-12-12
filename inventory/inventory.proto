@@ -189,9 +189,19 @@ message InventoryResponse{
 
 
 message  UserRatingsResponse{
-  repeated UserRatingResponse userRatings = 1;
-  PaginationParam pageDetail = 2;
+  repeated UserRatingResponse user_ratings = 1;
+  PaginationParam page_detail = 2;
   int32 total = 3;
+  RatingSummary rating_sumary = 4;
+}
+
+message RatingSummary {
+    int32 five_star = 1;
+	int32 four_star = 2;
+	int32 three_star = 3;
+	int32 two_star = 4;
+	int32 one_star = 5;
+	double average_rating = 6;
 }
 
 // return the inventory 
