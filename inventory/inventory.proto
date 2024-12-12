@@ -165,13 +165,10 @@ message UserRatingResponse {
     google.protobuf.Timestamp created_at = 7;
     string created_at_human = 8;              // Human-readable timestamp
     string updated_at_human = 9; 
-    UserRaterDetail rater_detail = 10;
+    User rater = 10;
 }
 
 
-message UserRaterDetail {
-    User rater = 1;
-}
 
 message InventoryResponseDetail{
     InventoryResponse inventory = 1;
