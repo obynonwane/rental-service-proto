@@ -35,6 +35,7 @@ service InventoryService {
     rpc RateUser (UserRatingRequest) returns (UserRatingResponse);
     rpc GetInventoryByID (ResourceId) returns (InventoryResponseDetail);
     rpc GetUserRatings (GetResourceWithIDAndPagination) returns (UserRatingsResponse);
+    rpc GetInventoryRatings (GetResourceWithIDAndPagination) returns (InventoryRatingsResponse);
 }
 
 
@@ -143,7 +144,8 @@ message InventoryRatingResponse {
     google.protobuf.Timestamp updated_at = 6;
     google.protobuf.Timestamp created_at = 7;
     string created_at_human = 8;              // Human-readable timestamp
-    string updated_at_human = 9;     
+    string updated_at_human = 9;   
+    User rater = 10;  
 }
 
 //--------------------------------------------USER RATING MESSAGE--------------------------------------------------//
@@ -196,6 +198,13 @@ message  UserRatingsResponse{
   PaginationParam page_detail = 2;
   int32 total = 3;
   RatingSummary rating_sumary = 4;
+}
+
+message  InventoryRatingsResponse{
+    repeated InventoryRatingResponse inventory_ratings = 1;
+    PaginationParam page_detail = 2;
+    int32 total = 3;
+    RatingSummary rating_sumary = 4;
 }
 
 message RatingSummary {
