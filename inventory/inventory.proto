@@ -36,6 +36,8 @@ service InventoryService {
     rpc GetInventoryByID (ResourceId) returns (InventoryResponseDetail);
     rpc GetUserRatings (GetResourceWithIDAndPagination) returns (UserRatingsResponse);
     rpc GetInventoryRatings (GetResourceWithIDAndPagination) returns (InventoryRatingsResponse);
+    rpc ReplyInventoryRating (ReplyToRatingRequest) returns (ReplyToRatingResponse);
+    rpc ReplyUserRating (ReplyToRatingRequest) returns (ReplyToRatingResponse);
 }
 
 
@@ -214,6 +216,26 @@ message RatingSummary {
 	int32 two_star = 4;
 	int32 one_star = 5;
 	double average_rating = 6;
+}
+
+message ReplyToRatingRequest {
+    string rating_id = 1;
+    string replier_id = 2;
+    string comment = 3;
+    string parent_reply_id = 4;
+}
+
+
+message ReplyToRatingResponse {
+    string id = 1;
+    string rating_id = 2;
+    string replier_id = 3;
+    string parent_reply_id = 4;
+    string comment = 5;
+    google.protobuf.Timestamp updated_at = 6;
+    google.protobuf.Timestamp created_at = 7;
+    string created_at_human = 8;             
+    string updated_at_human = 9; 
 }
 
 // return the inventory 
