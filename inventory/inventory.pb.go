@@ -989,17 +989,17 @@ type InventoryRatingResponse struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Id             string                        `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
-	InventoryId    string                        `protobuf:"bytes,2,opt,name=inventory_id,json=inventoryId,proto3" json:"inventory_id,omitempty"`
-	RaterId        string                        `protobuf:"bytes,3,opt,name=rater_id,json=raterId,proto3" json:"rater_id,omitempty"`
-	Rating         int32                         `protobuf:"varint,4,opt,name=rating,proto3" json:"rating,omitempty"`
-	Comment        string                        `protobuf:"bytes,5,opt,name=comment,proto3" json:"comment,omitempty"`
-	UpdatedAt      *timestamppb.Timestamp        `protobuf:"bytes,6,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
-	CreatedAt      *timestamppb.Timestamp        `protobuf:"bytes,7,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
-	CreatedAtHuman string                        `protobuf:"bytes,8,opt,name=created_at_human,json=createdAtHuman,proto3" json:"created_at_human,omitempty"` // Human-readable timestamp
-	UpdatedAtHuman string                        `protobuf:"bytes,9,opt,name=updated_at_human,json=updatedAtHuman,proto3" json:"updated_at_human,omitempty"`
-	Rater          *User                         `protobuf:"bytes,10,opt,name=rater,proto3" json:"rater,omitempty"`
-	Replies        *InventoryRatingReplyResponse `protobuf:"bytes,11,opt,name=replies,proto3" json:"replies,omitempty"`
+	Id             string                          `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	InventoryId    string                          `protobuf:"bytes,2,opt,name=inventory_id,json=inventoryId,proto3" json:"inventory_id,omitempty"`
+	RaterId        string                          `protobuf:"bytes,3,opt,name=rater_id,json=raterId,proto3" json:"rater_id,omitempty"`
+	Rating         int32                           `protobuf:"varint,4,opt,name=rating,proto3" json:"rating,omitempty"`
+	Comment        string                          `protobuf:"bytes,5,opt,name=comment,proto3" json:"comment,omitempty"`
+	UpdatedAt      *timestamppb.Timestamp          `protobuf:"bytes,6,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
+	CreatedAt      *timestamppb.Timestamp          `protobuf:"bytes,7,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
+	CreatedAtHuman string                          `protobuf:"bytes,8,opt,name=created_at_human,json=createdAtHuman,proto3" json:"created_at_human,omitempty"` // Human-readable timestamp
+	UpdatedAtHuman string                          `protobuf:"bytes,9,opt,name=updated_at_human,json=updatedAtHuman,proto3" json:"updated_at_human,omitempty"`
+	Rater          *User                           `protobuf:"bytes,10,opt,name=rater,proto3" json:"rater,omitempty"`
+	Replies        []*InventoryRatingReplyResponse `protobuf:"bytes,11,rep,name=replies,proto3" json:"replies,omitempty"`
 }
 
 func (x *InventoryRatingResponse) Reset() {
@@ -1102,7 +1102,7 @@ func (x *InventoryRatingResponse) GetRater() *User {
 	return nil
 }
 
-func (x *InventoryRatingResponse) GetReplies() *InventoryRatingReplyResponse {
+func (x *InventoryRatingResponse) GetReplies() []*InventoryRatingReplyResponse {
 	if x != nil {
 		return x.Replies
 	}
@@ -2155,7 +2155,7 @@ var file_inventory_inventory_proto_rawDesc = []byte{
 	0x6d, 0x61, 0x6e, 0x12, 0x25, 0x0a, 0x05, 0x72, 0x61, 0x74, 0x65, 0x72, 0x18, 0x0a, 0x20, 0x01,
 	0x28, 0x0b, 0x32, 0x0f, 0x2e, 0x69, 0x6e, 0x76, 0x65, 0x6e, 0x74, 0x6f, 0x72, 0x79, 0x2e, 0x55,
 	0x73, 0x65, 0x72, 0x52, 0x05, 0x72, 0x61, 0x74, 0x65, 0x72, 0x12, 0x41, 0x0a, 0x07, 0x72, 0x65,
-	0x70, 0x6c, 0x69, 0x65, 0x73, 0x18, 0x0b, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x27, 0x2e, 0x69, 0x6e,
+	0x70, 0x6c, 0x69, 0x65, 0x73, 0x18, 0x0b, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x27, 0x2e, 0x69, 0x6e,
 	0x76, 0x65, 0x6e, 0x74, 0x6f, 0x72, 0x79, 0x2e, 0x49, 0x6e, 0x76, 0x65, 0x6e, 0x74, 0x6f, 0x72,
 	0x79, 0x52, 0x61, 0x74, 0x69, 0x6e, 0x67, 0x52, 0x65, 0x70, 0x6c, 0x79, 0x52, 0x65, 0x73, 0x70,
 	0x6f, 0x6e, 0x73, 0x65, 0x52, 0x07, 0x72, 0x65, 0x70, 0x6c, 0x69, 0x65, 0x73, 0x22, 0x79, 0x0a,
