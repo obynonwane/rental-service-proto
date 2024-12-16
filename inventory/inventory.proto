@@ -238,6 +238,22 @@ message ReplyToRatingResponse {
     string updated_at_human = 9; 
 }
 
+
+message Reply {
+    string id = 1;
+    string parent_reply_id = 2;
+    string comment = 3;
+    google.protobuf.Timestamp updated_at = 4;
+    google.protobuf.Timestamp created_at = 5;
+    User replier = 6;
+}
+
+message InventoryRatingReplyResponse {
+    repeated Reply replies = 1;
+}
+
+
+
 // return the inventory 
 // return the user 
 // return the average rating for inventory 
