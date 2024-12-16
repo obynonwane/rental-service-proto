@@ -148,7 +148,7 @@ message InventoryRatingResponse {
     string created_at_human = 8;              // Human-readable timestamp
     string updated_at_human = 9;   
     User rater = 10;  
-    
+    InventoryRatingReplyResponse replies = 11; 
 }
 
 //--------------------------------------------USER RATING MESSAGE--------------------------------------------------//
