@@ -78,10 +78,13 @@ message ImageData {
 message CreateInventoryRequest {
     string category_id = 1;
     string sub_category_id = 2;
-    string name = 3;
-    string description = 4;
-    repeated ImageData images = 5;
-    string user_id = 6;
+    string country_id = 3;
+    string state_id = 4;
+    string lga_id = 5;
+    string name = 6;
+    string description = 7;
+    repeated ImageData images = 8;
+    string user_id = 9;
 }
 
 message CreateInventoryResponse {
