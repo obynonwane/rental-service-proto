@@ -257,6 +257,17 @@ message InventoryRatingReplyResponse {
 }
 
 
+// SearchPayload carries the filters and pagination for listing searches.
+message SearchInventoryRequest {
+  string country_id = 1;  // UUID of the country
+  string state_id   = 2;  // UUID of the state
+  string lga_id     = 3;  // UUID of the LGA
+  string text       = 4;  // Full-text search query
+  int32  limit      = 5;  // Maximum number of results to return
+  int32  offset     = 6;  // Number of results to skip (for pagination)
+}
+
+
 // return the inventory 
 // return the user 
 // return the average rating for inventory 
