@@ -263,8 +263,8 @@ message SearchInventoryRequest {
   string state_id   = 2;  // UUID of the state
   string lga_id     = 3;  // UUID of the LGA
   string text       = 4;  // Full-text search query
-  int32  limit      = 5;  // Maximum number of results to return
-  int32  offset     = 6;  // Number of results to skip (for pagination)
+  string limit      = 5;  // Maximum number of results to return
+  string offset     = 6;  // Number of results to skip (for pagination)
 }
 
 
