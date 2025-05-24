@@ -1,7 +1,6 @@
 syntax = "proto3";
 
 import "google/protobuf/timestamp.proto";
-import "google/protobuf/wrappers.proto";
 package inventory;
 option go_package = "github.com/obynonwane/rental-service-proto/inventory";
 
@@ -192,8 +191,8 @@ message InventoryResponse{
     string user_id = 4;
     string category_id = 5;
     string subcategory_id = 6;
-    google.protobuf.BoolValue promoted = 7;
-    google.protobuf.BoolValue deactivated = 8;
+    bool promoted = 7;
+    bool deactivated = 8;
     google.protobuf.Timestamp updated_at = 9;
     google.protobuf.Timestamp created_at = 10;
     string created_at_human = 11;             
@@ -309,8 +308,8 @@ message Inventory {
   string user_id        = 4;  // references User.id
   string category_id    = 5;
   string subcategory_id = 6;
-  google.protobuf.BoolValue   promoted       = 7;
-  google.protobuf.BoolValue   deactivated    = 8;
+  bool   promoted       = 7;
+  bool   deactivated    = 8;
   google.protobuf.Timestamp created_at = 9;
   google.protobuf.Timestamp updated_at = 10;
 
