@@ -38,6 +38,7 @@ service InventoryService {
     rpc GetInventoryRatings (GetResourceWithIDAndPagination) returns (InventoryRatingsResponse);
     rpc ReplyInventoryRating (ReplyToRatingRequest) returns (ReplyToRatingResponse);
     rpc ReplyUserRating (ReplyToRatingRequest) returns (ReplyToRatingResponse);
+    rpc SearchInventory (SearchInventoryRequest) returns (ReplyToRatingResponse);
 }
 
 
@@ -265,6 +266,85 @@ message SearchInventoryRequest {
   string text       = 4;  // Full-text search query
   string limit      = 5;  // Maximum number of results to return
   string offset     = 6;  // Number of results to skip (for pagination)
+}
+
+
+message Country {
+    string id   = 1;
+    string name = 2;
+    google.protobuf.Timestamp created_at = 3; // Reply creation timestamp
+    google.protobuf.Timestamp updated_at = 4; // Reply updated timestamp
+}
+
+message State {
+    string id         = 1;
+    string name       = 2;
+    string code       = 3;
+    string country_id = 4;
+    google.protobuf.Timestamp created_at = 5; // Reply creation timestamp
+    google.protobuf.Timestamp updated_at = 6; // Reply updated timestamp
+}
+
+message LGA {
+    string id       = 1;
+    string name     = 2;
+    string state_id = 3;
+    google.protobuf.Timestamp created_at = 4; // Reply creation timestamp
+    google.protobuf.Timestamp updated_at = 5; // Reply updated timestamp
+}
+
+
+// Represents an inventory item.
+message Inventory {
+  string id             = 1;  // UUID of the inventory
+  string name           = 2;
+  string description    = 3;
+  string user_id        = 4;  // references User.id
+  string category_id    = 5;
+  string subcategory_id = 6;
+  bool   promoted       = 7;
+  bool   deactivated    = 8;
+  google.protobuf.Timestamp created_at = 9;
+  google.protobuf.Timestamp updated_at = 10;
+
+  // Foreign-key IDs
+  string country_id     = 11;
+  string state_id       = 12;
+  string lga_id         = 13;
+
+  // Rich objects
+  Country country = 14;
+  State   state   = 15;
+  LGA     lga     = 16;
+
+  repeated InventoryImage images = 17;
+  User   user           = 18;
+}
+
+// One image associated with an inventory item.
+message InventoryImage {
+  string id             = 1;
+  string live_url       = 2;
+  string local_url      = 3;
+  string inventory_id   = 4;
+  google.protobuf.Timestamp created_at = 5;
+  google.protobuf.Timestamp updated_at = 6;
+}
+
+
+// A paginated collection of Inventory items.
+message InventoryCollection {
+  // The list of inventory records.
+  repeated Inventory inventories = 1;
+
+  // Total number of matching inventories in the database.
+  int32 total_count           = 2;
+
+  // The offset you used for this page (skip N rows).
+  int32 offset                = 3;
+
+  // The max number of items you requested.
+  int32 limit                 = 4;
 }
 
 

@@ -32,6 +32,7 @@ const (
 	InventoryService_GetInventoryRatings_FullMethodName      = "/inventory.InventoryService/GetInventoryRatings"
 	InventoryService_ReplyInventoryRating_FullMethodName     = "/inventory.InventoryService/ReplyInventoryRating"
 	InventoryService_ReplyUserRating_FullMethodName          = "/inventory.InventoryService/ReplyUserRating"
+	InventoryService_SearchInventory_FullMethodName          = "/inventory.InventoryService/SearchInventory"
 )
 
 // InventoryServiceClient is the client API for InventoryService service.
@@ -51,6 +52,7 @@ type InventoryServiceClient interface {
 	GetInventoryRatings(ctx context.Context, in *GetResourceWithIDAndPagination, opts ...grpc.CallOption) (*InventoryRatingsResponse, error)
 	ReplyInventoryRating(ctx context.Context, in *ReplyToRatingRequest, opts ...grpc.CallOption) (*ReplyToRatingResponse, error)
 	ReplyUserRating(ctx context.Context, in *ReplyToRatingRequest, opts ...grpc.CallOption) (*ReplyToRatingResponse, error)
+	SearchInventory(ctx context.Context, in *SearchInventoryRequest, opts ...grpc.CallOption) (*ReplyToRatingResponse, error)
 }
 
 type inventoryServiceClient struct {
@@ -191,6 +193,16 @@ func (c *inventoryServiceClient) ReplyUserRating(ctx context.Context, in *ReplyT
 	return out, nil
 }
 
+func (c *inventoryServiceClient) SearchInventory(ctx context.Context, in *SearchInventoryRequest, opts ...grpc.CallOption) (*ReplyToRatingResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ReplyToRatingResponse)
+	err := c.cc.Invoke(ctx, InventoryService_SearchInventory_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // InventoryServiceServer is the server API for InventoryService service.
 // All implementations must embed UnimplementedInventoryServiceServer
 // for forward compatibility.
@@ -208,6 +220,7 @@ type InventoryServiceServer interface {
 	GetInventoryRatings(context.Context, *GetResourceWithIDAndPagination) (*InventoryRatingsResponse, error)
 	ReplyInventoryRating(context.Context, *ReplyToRatingRequest) (*ReplyToRatingResponse, error)
 	ReplyUserRating(context.Context, *ReplyToRatingRequest) (*ReplyToRatingResponse, error)
+	SearchInventory(context.Context, *SearchInventoryRequest) (*ReplyToRatingResponse, error)
 	mustEmbedUnimplementedInventoryServiceServer()
 }
 
@@ -256,6 +269,9 @@ func (UnimplementedInventoryServiceServer) ReplyInventoryRating(context.Context,
 }
 func (UnimplementedInventoryServiceServer) ReplyUserRating(context.Context, *ReplyToRatingRequest) (*ReplyToRatingResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ReplyUserRating not implemented")
+}
+func (UnimplementedInventoryServiceServer) SearchInventory(context.Context, *SearchInventoryRequest) (*ReplyToRatingResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SearchInventory not implemented")
 }
 func (UnimplementedInventoryServiceServer) mustEmbedUnimplementedInventoryServiceServer() {}
 func (UnimplementedInventoryServiceServer) testEmbeddedByValue()                          {}
@@ -512,6 +528,24 @@ func _InventoryService_ReplyUserRating_Handler(srv interface{}, ctx context.Cont
 	return interceptor(ctx, in, info, handler)
 }
 
+func _InventoryService_SearchInventory_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(SearchInventoryRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(InventoryServiceServer).SearchInventory(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: InventoryService_SearchInventory_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(InventoryServiceServer).SearchInventory(ctx, req.(*SearchInventoryRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // InventoryService_ServiceDesc is the grpc.ServiceDesc for InventoryService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -570,6 +604,10 @@ var InventoryService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "ReplyUserRating",
 			Handler:    _InventoryService_ReplyUserRating_Handler,
+		},
+		{
+			MethodName: "SearchInventory",
+			Handler:    _InventoryService_SearchInventory_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
