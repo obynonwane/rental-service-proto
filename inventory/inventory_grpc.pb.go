@@ -52,7 +52,7 @@ type InventoryServiceClient interface {
 	GetInventoryRatings(ctx context.Context, in *GetResourceWithIDAndPagination, opts ...grpc.CallOption) (*InventoryRatingsResponse, error)
 	ReplyInventoryRating(ctx context.Context, in *ReplyToRatingRequest, opts ...grpc.CallOption) (*ReplyToRatingResponse, error)
 	ReplyUserRating(ctx context.Context, in *ReplyToRatingRequest, opts ...grpc.CallOption) (*ReplyToRatingResponse, error)
-	SearchInventory(ctx context.Context, in *SearchInventoryRequest, opts ...grpc.CallOption) (*ReplyToRatingResponse, error)
+	SearchInventory(ctx context.Context, in *SearchInventoryRequest, opts ...grpc.CallOption) (*InventoryCollection, error)
 }
 
 type inventoryServiceClient struct {
@@ -193,9 +193,9 @@ func (c *inventoryServiceClient) ReplyUserRating(ctx context.Context, in *ReplyT
 	return out, nil
 }
 
-func (c *inventoryServiceClient) SearchInventory(ctx context.Context, in *SearchInventoryRequest, opts ...grpc.CallOption) (*ReplyToRatingResponse, error) {
+func (c *inventoryServiceClient) SearchInventory(ctx context.Context, in *SearchInventoryRequest, opts ...grpc.CallOption) (*InventoryCollection, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(ReplyToRatingResponse)
+	out := new(InventoryCollection)
 	err := c.cc.Invoke(ctx, InventoryService_SearchInventory_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
@@ -220,7 +220,7 @@ type InventoryServiceServer interface {
 	GetInventoryRatings(context.Context, *GetResourceWithIDAndPagination) (*InventoryRatingsResponse, error)
 	ReplyInventoryRating(context.Context, *ReplyToRatingRequest) (*ReplyToRatingResponse, error)
 	ReplyUserRating(context.Context, *ReplyToRatingRequest) (*ReplyToRatingResponse, error)
-	SearchInventory(context.Context, *SearchInventoryRequest) (*ReplyToRatingResponse, error)
+	SearchInventory(context.Context, *SearchInventoryRequest) (*InventoryCollection, error)
 	mustEmbedUnimplementedInventoryServiceServer()
 }
 
@@ -270,7 +270,7 @@ func (UnimplementedInventoryServiceServer) ReplyInventoryRating(context.Context,
 func (UnimplementedInventoryServiceServer) ReplyUserRating(context.Context, *ReplyToRatingRequest) (*ReplyToRatingResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ReplyUserRating not implemented")
 }
-func (UnimplementedInventoryServiceServer) SearchInventory(context.Context, *SearchInventoryRequest) (*ReplyToRatingResponse, error) {
+func (UnimplementedInventoryServiceServer) SearchInventory(context.Context, *SearchInventoryRequest) (*InventoryCollection, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method SearchInventory not implemented")
 }
 func (UnimplementedInventoryServiceServer) mustEmbedUnimplementedInventoryServiceServer() {}

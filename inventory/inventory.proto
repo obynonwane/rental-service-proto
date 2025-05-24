@@ -38,7 +38,7 @@ service InventoryService {
     rpc GetInventoryRatings (GetResourceWithIDAndPagination) returns (InventoryRatingsResponse);
     rpc ReplyInventoryRating (ReplyToRatingRequest) returns (ReplyToRatingResponse);
     rpc ReplyUserRating (ReplyToRatingRequest) returns (ReplyToRatingResponse);
-    rpc SearchInventory (SearchInventoryRequest) returns (ReplyToRatingResponse);
+    rpc SearchInventory (SearchInventoryRequest) returns (InventoryCollection);
 }
 
 
