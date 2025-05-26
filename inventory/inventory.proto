@@ -86,7 +86,7 @@ message CreateInventoryRequest {
     string description = 7;
     repeated ImageData images = 8;
     string user_id = 9;
-    string offer_price = 10;
+    double offer_price = 10; // Changed to double
 }
 
 message CreateInventoryResponse {
