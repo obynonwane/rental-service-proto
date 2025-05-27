@@ -108,6 +108,7 @@ message CategoryResponse{
     string created_at_human = 7;              // Human-readable timestamp
     string updated_at_human = 8;              // Human-readable timestamp
     int32 status_code = 9;
+    string category_slug = 10;
 }
 
 message SubCategoryResponse{
@@ -121,6 +122,7 @@ message SubCategoryResponse{
     string created_at_human = 8;              // Human-readable timestamp
     string updated_at_human = 9;              // Human-readable timestamp
     int32 status_code = 10;
+    string subcategory_slug = 11;
 }
 
 message AllCategoryResponse {
