@@ -331,6 +331,9 @@ message Inventory {
 
   string created_at_human = 19;    // Human-readable creation timestamp
   string updated_at_human = 20;    // Human-readable updated timestamp
+  string slug       = 21;  // references User.id
+  string ulid       = 22;
+  double offer_price = 23;
 }
 
 // One image associated with an inventory item.
@@ -343,6 +346,7 @@ message InventoryImage {
   google.protobuf.Timestamp updated_at = 6;
   string created_at_human = 7;    // Human-readable creation timestamp
   string updated_at_human = 8;    // Human-readable updated timestamp
+
 }
 
 
