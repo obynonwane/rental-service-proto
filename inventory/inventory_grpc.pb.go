@@ -47,7 +47,7 @@ type InventoryServiceClient interface {
 	GetCategorySubcategories(ctx context.Context, in *ResourceId, opts ...grpc.CallOption) (*AllSubCategoryResponse, error)
 	RateInventory(ctx context.Context, in *InventoryRatingRequest, opts ...grpc.CallOption) (*InventoryRatingResponse, error)
 	RateUser(ctx context.Context, in *UserRatingRequest, opts ...grpc.CallOption) (*UserRatingResponse, error)
-	GetInventoryByID(ctx context.Context, in *ResourceId, opts ...grpc.CallOption) (*InventoryResponseDetail, error)
+	GetInventoryByID(ctx context.Context, in *SingleInventoryRequestDetail, opts ...grpc.CallOption) (*InventoryResponseDetail, error)
 	GetUserRatings(ctx context.Context, in *GetResourceWithIDAndPagination, opts ...grpc.CallOption) (*UserRatingsResponse, error)
 	GetInventoryRatings(ctx context.Context, in *GetResourceWithIDAndPagination, opts ...grpc.CallOption) (*InventoryRatingsResponse, error)
 	ReplyInventoryRating(ctx context.Context, in *ReplyToRatingRequest, opts ...grpc.CallOption) (*ReplyToRatingResponse, error)
@@ -143,7 +143,7 @@ func (c *inventoryServiceClient) RateUser(ctx context.Context, in *UserRatingReq
 	return out, nil
 }
 
-func (c *inventoryServiceClient) GetInventoryByID(ctx context.Context, in *ResourceId, opts ...grpc.CallOption) (*InventoryResponseDetail, error) {
+func (c *inventoryServiceClient) GetInventoryByID(ctx context.Context, in *SingleInventoryRequestDetail, opts ...grpc.CallOption) (*InventoryResponseDetail, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(InventoryResponseDetail)
 	err := c.cc.Invoke(ctx, InventoryService_GetInventoryByID_FullMethodName, in, out, cOpts...)
@@ -215,7 +215,7 @@ type InventoryServiceServer interface {
 	GetCategorySubcategories(context.Context, *ResourceId) (*AllSubCategoryResponse, error)
 	RateInventory(context.Context, *InventoryRatingRequest) (*InventoryRatingResponse, error)
 	RateUser(context.Context, *UserRatingRequest) (*UserRatingResponse, error)
-	GetInventoryByID(context.Context, *ResourceId) (*InventoryResponseDetail, error)
+	GetInventoryByID(context.Context, *SingleInventoryRequestDetail) (*InventoryResponseDetail, error)
 	GetUserRatings(context.Context, *GetResourceWithIDAndPagination) (*UserRatingsResponse, error)
 	GetInventoryRatings(context.Context, *GetResourceWithIDAndPagination) (*InventoryRatingsResponse, error)
 	ReplyInventoryRating(context.Context, *ReplyToRatingRequest) (*ReplyToRatingResponse, error)
@@ -255,7 +255,7 @@ func (UnimplementedInventoryServiceServer) RateInventory(context.Context, *Inven
 func (UnimplementedInventoryServiceServer) RateUser(context.Context, *UserRatingRequest) (*UserRatingResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method RateUser not implemented")
 }
-func (UnimplementedInventoryServiceServer) GetInventoryByID(context.Context, *ResourceId) (*InventoryResponseDetail, error) {
+func (UnimplementedInventoryServiceServer) GetInventoryByID(context.Context, *SingleInventoryRequestDetail) (*InventoryResponseDetail, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetInventoryByID not implemented")
 }
 func (UnimplementedInventoryServiceServer) GetUserRatings(context.Context, *GetResourceWithIDAndPagination) (*UserRatingsResponse, error) {
@@ -439,7 +439,7 @@ func _InventoryService_RateUser_Handler(srv interface{}, ctx context.Context, de
 }
 
 func _InventoryService_GetInventoryByID_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(ResourceId)
+	in := new(SingleInventoryRequestDetail)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -451,7 +451,7 @@ func _InventoryService_GetInventoryByID_Handler(srv interface{}, ctx context.Con
 		FullMethod: InventoryService_GetInventoryByID_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(InventoryServiceServer).GetInventoryByID(ctx, req.(*ResourceId))
+		return srv.(InventoryServiceServer).GetInventoryByID(ctx, req.(*SingleInventoryRequestDetail))
 	}
 	return interceptor(ctx, in, info, handler)
 }
