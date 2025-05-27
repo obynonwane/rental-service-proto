@@ -2424,7 +2424,7 @@ type Inventory struct {
 	User           *User             `protobuf:"bytes,18,opt,name=user,proto3" json:"user,omitempty"`
 	CreatedAtHuman string            `protobuf:"bytes,19,opt,name=created_at_human,json=createdAtHuman,proto3" json:"created_at_human,omitempty"` // Human-readable creation timestamp
 	UpdatedAtHuman string            `protobuf:"bytes,20,opt,name=updated_at_human,json=updatedAtHuman,proto3" json:"updated_at_human,omitempty"` // Human-readable updated timestamp
-	Slug           string            `protobuf:"bytes,21,opt,name=slug,proto3" json:"slug,omitempty"`                                             // references User.id
+	Slug           string            `protobuf:"bytes,21,opt,name=slug,proto3" json:"slug,omitempty"`
 	Ulid           string            `protobuf:"bytes,22,opt,name=ulid,proto3" json:"ulid,omitempty"`
 	OfferPrice     float64           `protobuf:"fixed64,23,opt,name=offer_price,json=offerPrice,proto3" json:"offer_price,omitempty"`
 }
