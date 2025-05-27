@@ -205,7 +205,8 @@ message InventoryResponse{
     google.protobuf.Timestamp updated_at = 9;
     google.protobuf.Timestamp created_at = 10;
     string created_at_human = 11;             
-    string updated_at_human = 12;     
+    string updated_at_human = 12;    
+    double offer_price = 13;
 }
 
 
