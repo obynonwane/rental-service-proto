@@ -190,7 +190,7 @@ message UserRatingResponse {
 message InventoryResponseDetail{
     InventoryResponse inventory = 1;
     User user = 2;
-    InventoryImage image = 3;
+    repeated InventoryImage images = 3;
 }
 
 message InventoryResponse{
