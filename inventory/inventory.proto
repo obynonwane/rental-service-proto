@@ -277,8 +277,7 @@ message SearchInventoryRequest {
   string offset     = 6;  // Number of results to skip (for pagination)
   string category_id = 7;
   string subcategory_id = 8;
-  string category_slug = 9;
-  string subcategory_slug = 10;
+  string slug = 9;
 }
 
 
