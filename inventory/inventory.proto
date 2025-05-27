@@ -12,6 +12,11 @@ message ResourceId {
     string id = 1;
 }
 
+message SingleInventoryRequestDetail {
+    string slug_ulid = 1;
+    string inventory_id = 2;
+}
+
 message PaginationParam {
     int32 page = 1;
     int32 limit = 2;
