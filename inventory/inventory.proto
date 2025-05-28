@@ -207,6 +207,12 @@ message InventoryResponse{
     string created_at_human = 11;             
     string updated_at_human = 12;    
     double offer_price = 13;
+
+    string state_slug = 14;
+    string country_slug = 15;
+    string lga_slug = 16;
+    string category_slug = 17;
+    string subcategory_slug = 18;
 }
 
 
@@ -279,6 +285,12 @@ message SearchInventoryRequest {
   string category_id = 7;
   string subcategory_id = 8;
   string ulid = 9;
+
+  string state_slug = 10;
+  string country_slug = 11;
+  string lga_slug = 12;
+  string category_slug = 13;
+  string subcategory_slug = 14;
 }
 
 
@@ -344,6 +356,12 @@ message Inventory {
   string slug = 21 [json_name = "slug"];
   string ulid       = 22;
   double offer_price = 23;
+
+  string state_slug = 24;
+  string country_slug = 25;
+  string lga_slug = 26;
+  string category_slug = 27;
+  string subcategory_slug = 28;
 }
 
 // One image associated with an inventory item.
