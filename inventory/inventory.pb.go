@@ -3009,6 +3009,59 @@ func (x *InventoryCollection) GetLimit() int32 {
 	return 0
 }
 
+type GetCategoryByIDPayload struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	CategoryId   string `protobuf:"bytes,1,opt,name=category_id,json=categoryId,proto3" json:"category_id,omitempty"`
+	CategorySlug string `protobuf:"bytes,2,opt,name=category_slug,json=categorySlug,proto3" json:"category_slug,omitempty"`
+}
+
+func (x *GetCategoryByIDPayload) Reset() {
+	*x = GetCategoryByIDPayload{}
+	mi := &file_inventory_inventory_proto_msgTypes[33]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetCategoryByIDPayload) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetCategoryByIDPayload) ProtoMessage() {}
+
+func (x *GetCategoryByIDPayload) ProtoReflect() protoreflect.Message {
+	mi := &file_inventory_inventory_proto_msgTypes[33]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetCategoryByIDPayload.ProtoReflect.Descriptor instead.
+func (*GetCategoryByIDPayload) Descriptor() ([]byte, []int) {
+	return file_inventory_inventory_proto_rawDescGZIP(), []int{33}
+}
+
+func (x *GetCategoryByIDPayload) GetCategoryId() string {
+	if x != nil {
+		return x.CategoryId
+	}
+	return ""
+}
+
+func (x *GetCategoryByIDPayload) GetCategorySlug() string {
+	if x != nil {
+		return x.CategorySlug
+	}
+	return ""
+}
+
 var File_inventory_inventory_proto protoreflect.FileDescriptor
 
 var file_inventory_inventory_proto_rawDesc = []byte{
@@ -3555,7 +3608,13 @@ var file_inventory_inventory_proto_rawDesc = []byte{
 	0x74, 0x6f, 0x74, 0x61, 0x6c, 0x43, 0x6f, 0x75, 0x6e, 0x74, 0x12, 0x16, 0x0a, 0x06, 0x6f, 0x66,
 	0x66, 0x73, 0x65, 0x74, 0x18, 0x03, 0x20, 0x01, 0x28, 0x05, 0x52, 0x06, 0x6f, 0x66, 0x66, 0x73,
 	0x65, 0x74, 0x12, 0x14, 0x0a, 0x05, 0x6c, 0x69, 0x6d, 0x69, 0x74, 0x18, 0x04, 0x20, 0x01, 0x28,
-	0x05, 0x52, 0x05, 0x6c, 0x69, 0x6d, 0x69, 0x74, 0x32, 0xae, 0x09, 0x0a, 0x10, 0x49, 0x6e, 0x76,
+	0x05, 0x52, 0x05, 0x6c, 0x69, 0x6d, 0x69, 0x74, 0x22, 0x5e, 0x0a, 0x16, 0x47, 0x65, 0x74, 0x43,
+	0x61, 0x74, 0x65, 0x67, 0x6f, 0x72, 0x79, 0x42, 0x79, 0x49, 0x44, 0x50, 0x61, 0x79, 0x6c, 0x6f,
+	0x61, 0x64, 0x12, 0x1f, 0x0a, 0x0b, 0x63, 0x61, 0x74, 0x65, 0x67, 0x6f, 0x72, 0x79, 0x5f, 0x69,
+	0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0a, 0x63, 0x61, 0x74, 0x65, 0x67, 0x6f, 0x72,
+	0x79, 0x49, 0x64, 0x12, 0x23, 0x0a, 0x0d, 0x63, 0x61, 0x74, 0x65, 0x67, 0x6f, 0x72, 0x79, 0x5f,
+	0x73, 0x6c, 0x75, 0x67, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0c, 0x63, 0x61, 0x74, 0x65,
+	0x67, 0x6f, 0x72, 0x79, 0x53, 0x6c, 0x75, 0x67, 0x32, 0xae, 0x09, 0x0a, 0x10, 0x49, 0x6e, 0x76,
 	0x65, 0x6e, 0x74, 0x6f, 0x72, 0x79, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x12, 0x40, 0x0a,
 	0x08, 0x47, 0x65, 0x74, 0x55, 0x73, 0x65, 0x72, 0x73, 0x12, 0x17, 0x2e, 0x69, 0x6e, 0x76, 0x65,
 	0x6e, 0x74, 0x6f, 0x72, 0x79, 0x2e, 0x45, 0x6d, 0x70, 0x74, 0x79, 0x52, 0x65, 0x71, 0x75, 0x65,
@@ -3649,7 +3708,7 @@ func file_inventory_inventory_proto_rawDescGZIP() []byte {
 	return file_inventory_inventory_proto_rawDescData
 }
 
-var file_inventory_inventory_proto_msgTypes = make([]protoimpl.MessageInfo, 33)
+var file_inventory_inventory_proto_msgTypes = make([]protoimpl.MessageInfo, 34)
 var file_inventory_inventory_proto_goTypes = []any{
 	(*EmptyRequest)(nil),                   // 0: inventory.EmptyRequest
 	(*ResourceId)(nil),                     // 1: inventory.ResourceId
@@ -3684,59 +3743,60 @@ var file_inventory_inventory_proto_goTypes = []any{
 	(*Inventory)(nil),                      // 30: inventory.Inventory
 	(*InventoryImage)(nil),                 // 31: inventory.InventoryImage
 	(*InventoryCollection)(nil),            // 32: inventory.InventoryCollection
-	(*timestamppb.Timestamp)(nil),          // 33: google.protobuf.Timestamp
+	(*GetCategoryByIDPayload)(nil),         // 33: inventory.GetCategoryByIDPayload
+	(*timestamppb.Timestamp)(nil),          // 34: google.protobuf.Timestamp
 }
 var file_inventory_inventory_proto_depIdxs = []int32{
 	1,  // 0: inventory.GetResourceWithIDAndPagination.id:type_name -> inventory.ResourceId
 	3,  // 1: inventory.GetResourceWithIDAndPagination.pagination:type_name -> inventory.PaginationParam
-	33, // 2: inventory.User.created_at:type_name -> google.protobuf.Timestamp
-	33, // 3: inventory.User.updated_at:type_name -> google.protobuf.Timestamp
+	34, // 2: inventory.User.created_at:type_name -> google.protobuf.Timestamp
+	34, // 3: inventory.User.updated_at:type_name -> google.protobuf.Timestamp
 	5,  // 4: inventory.UserListResponse.users:type_name -> inventory.User
 	7,  // 5: inventory.CreateInventoryRequest.images:type_name -> inventory.ImageData
-	33, // 6: inventory.CategoryResponse.created_at:type_name -> google.protobuf.Timestamp
-	33, // 7: inventory.CategoryResponse.updated_at:type_name -> google.protobuf.Timestamp
-	33, // 8: inventory.SubCategoryResponse.created_at:type_name -> google.protobuf.Timestamp
-	33, // 9: inventory.SubCategoryResponse.updated_at:type_name -> google.protobuf.Timestamp
+	34, // 6: inventory.CategoryResponse.created_at:type_name -> google.protobuf.Timestamp
+	34, // 7: inventory.CategoryResponse.updated_at:type_name -> google.protobuf.Timestamp
+	34, // 8: inventory.SubCategoryResponse.created_at:type_name -> google.protobuf.Timestamp
+	34, // 9: inventory.SubCategoryResponse.updated_at:type_name -> google.protobuf.Timestamp
 	10, // 10: inventory.AllCategoryResponse.categories:type_name -> inventory.CategoryResponse
 	11, // 11: inventory.AllSubCategoryResponse.subcategories:type_name -> inventory.SubCategoryResponse
-	33, // 12: inventory.InventoryRatingResponse.updated_at:type_name -> google.protobuf.Timestamp
-	33, // 13: inventory.InventoryRatingResponse.created_at:type_name -> google.protobuf.Timestamp
+	34, // 12: inventory.InventoryRatingResponse.updated_at:type_name -> google.protobuf.Timestamp
+	34, // 13: inventory.InventoryRatingResponse.created_at:type_name -> google.protobuf.Timestamp
 	5,  // 14: inventory.InventoryRatingResponse.rater:type_name -> inventory.User
 	25, // 15: inventory.InventoryRatingResponse.replies:type_name -> inventory.InventoryRatingReplyResponse
-	33, // 16: inventory.UserRatingResponse.updated_at:type_name -> google.protobuf.Timestamp
-	33, // 17: inventory.UserRatingResponse.created_at:type_name -> google.protobuf.Timestamp
+	34, // 16: inventory.UserRatingResponse.updated_at:type_name -> google.protobuf.Timestamp
+	34, // 17: inventory.UserRatingResponse.created_at:type_name -> google.protobuf.Timestamp
 	5,  // 18: inventory.UserRatingResponse.rater:type_name -> inventory.User
 	19, // 19: inventory.InventoryResponseDetail.inventory:type_name -> inventory.InventoryResponse
 	5,  // 20: inventory.InventoryResponseDetail.user:type_name -> inventory.User
 	31, // 21: inventory.InventoryResponseDetail.images:type_name -> inventory.InventoryImage
-	33, // 22: inventory.InventoryResponse.updated_at:type_name -> google.protobuf.Timestamp
-	33, // 23: inventory.InventoryResponse.created_at:type_name -> google.protobuf.Timestamp
+	34, // 22: inventory.InventoryResponse.updated_at:type_name -> google.protobuf.Timestamp
+	34, // 23: inventory.InventoryResponse.created_at:type_name -> google.protobuf.Timestamp
 	17, // 24: inventory.UserRatingsResponse.user_ratings:type_name -> inventory.UserRatingResponse
 	3,  // 25: inventory.UserRatingsResponse.page_detail:type_name -> inventory.PaginationParam
 	22, // 26: inventory.UserRatingsResponse.rating_sumary:type_name -> inventory.RatingSummary
 	15, // 27: inventory.InventoryRatingsResponse.inventory_ratings:type_name -> inventory.InventoryRatingResponse
 	3,  // 28: inventory.InventoryRatingsResponse.page_detail:type_name -> inventory.PaginationParam
 	22, // 29: inventory.InventoryRatingsResponse.rating_sumary:type_name -> inventory.RatingSummary
-	33, // 30: inventory.ReplyToRatingResponse.updated_at:type_name -> google.protobuf.Timestamp
-	33, // 31: inventory.ReplyToRatingResponse.created_at:type_name -> google.protobuf.Timestamp
-	33, // 32: inventory.InventoryRatingReplyResponse.created_at:type_name -> google.protobuf.Timestamp
-	33, // 33: inventory.InventoryRatingReplyResponse.updated_at:type_name -> google.protobuf.Timestamp
+	34, // 30: inventory.ReplyToRatingResponse.updated_at:type_name -> google.protobuf.Timestamp
+	34, // 31: inventory.ReplyToRatingResponse.created_at:type_name -> google.protobuf.Timestamp
+	34, // 32: inventory.InventoryRatingReplyResponse.created_at:type_name -> google.protobuf.Timestamp
+	34, // 33: inventory.InventoryRatingReplyResponse.updated_at:type_name -> google.protobuf.Timestamp
 	5,  // 34: inventory.InventoryRatingReplyResponse.replier:type_name -> inventory.User
-	33, // 35: inventory.Country.created_at:type_name -> google.protobuf.Timestamp
-	33, // 36: inventory.Country.updated_at:type_name -> google.protobuf.Timestamp
-	33, // 37: inventory.State.created_at:type_name -> google.protobuf.Timestamp
-	33, // 38: inventory.State.updated_at:type_name -> google.protobuf.Timestamp
-	33, // 39: inventory.LGA.created_at:type_name -> google.protobuf.Timestamp
-	33, // 40: inventory.LGA.updated_at:type_name -> google.protobuf.Timestamp
-	33, // 41: inventory.Inventory.created_at:type_name -> google.protobuf.Timestamp
-	33, // 42: inventory.Inventory.updated_at:type_name -> google.protobuf.Timestamp
+	34, // 35: inventory.Country.created_at:type_name -> google.protobuf.Timestamp
+	34, // 36: inventory.Country.updated_at:type_name -> google.protobuf.Timestamp
+	34, // 37: inventory.State.created_at:type_name -> google.protobuf.Timestamp
+	34, // 38: inventory.State.updated_at:type_name -> google.protobuf.Timestamp
+	34, // 39: inventory.LGA.created_at:type_name -> google.protobuf.Timestamp
+	34, // 40: inventory.LGA.updated_at:type_name -> google.protobuf.Timestamp
+	34, // 41: inventory.Inventory.created_at:type_name -> google.protobuf.Timestamp
+	34, // 42: inventory.Inventory.updated_at:type_name -> google.protobuf.Timestamp
 	27, // 43: inventory.Inventory.country:type_name -> inventory.Country
 	28, // 44: inventory.Inventory.state:type_name -> inventory.State
 	29, // 45: inventory.Inventory.lga:type_name -> inventory.LGA
 	31, // 46: inventory.Inventory.images:type_name -> inventory.InventoryImage
 	5,  // 47: inventory.Inventory.user:type_name -> inventory.User
-	33, // 48: inventory.InventoryImage.created_at:type_name -> google.protobuf.Timestamp
-	33, // 49: inventory.InventoryImage.updated_at:type_name -> google.protobuf.Timestamp
+	34, // 48: inventory.InventoryImage.created_at:type_name -> google.protobuf.Timestamp
+	34, // 49: inventory.InventoryImage.updated_at:type_name -> google.protobuf.Timestamp
 	30, // 50: inventory.InventoryCollection.inventories:type_name -> inventory.Inventory
 	0,  // 51: inventory.InventoryService.GetUsers:input_type -> inventory.EmptyRequest
 	8,  // 52: inventory.InventoryService.CreateInventory:input_type -> inventory.CreateInventoryRequest
@@ -3784,7 +3844,7 @@ func file_inventory_inventory_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_inventory_inventory_proto_rawDesc,
 			NumEnums:      0,
-			NumMessages:   33,
+			NumMessages:   34,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

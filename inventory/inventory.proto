@@ -394,6 +394,11 @@ message InventoryCollection {
 }
 
 
+message GetCategoryByIDPayload {
+  string category_id = 1;
+  string category_slug = 2;
+}
+
 // return the inventory 
 // return the user 
 // return the average rating for inventory 
