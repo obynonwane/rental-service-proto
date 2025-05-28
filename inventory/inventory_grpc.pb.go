@@ -43,7 +43,7 @@ type InventoryServiceClient interface {
 	CreateInventory(ctx context.Context, in *CreateInventoryRequest, opts ...grpc.CallOption) (*CreateInventoryResponse, error)
 	GetCategories(ctx context.Context, in *EmptyRequest, opts ...grpc.CallOption) (*AllCategoryResponse, error)
 	GetSubCategories(ctx context.Context, in *EmptyRequest, opts ...grpc.CallOption) (*AllSubCategoryResponse, error)
-	GetCategory(ctx context.Context, in *ResourceId, opts ...grpc.CallOption) (*CategoryResponse, error)
+	GetCategory(ctx context.Context, in *GetCategoryByIDPayload, opts ...grpc.CallOption) (*CategoryResponse, error)
 	GetCategorySubcategories(ctx context.Context, in *ResourceId, opts ...grpc.CallOption) (*AllSubCategoryResponse, error)
 	RateInventory(ctx context.Context, in *InventoryRatingRequest, opts ...grpc.CallOption) (*InventoryRatingResponse, error)
 	RateUser(ctx context.Context, in *UserRatingRequest, opts ...grpc.CallOption) (*UserRatingResponse, error)
@@ -103,7 +103,7 @@ func (c *inventoryServiceClient) GetSubCategories(ctx context.Context, in *Empty
 	return out, nil
 }
 
-func (c *inventoryServiceClient) GetCategory(ctx context.Context, in *ResourceId, opts ...grpc.CallOption) (*CategoryResponse, error) {
+func (c *inventoryServiceClient) GetCategory(ctx context.Context, in *GetCategoryByIDPayload, opts ...grpc.CallOption) (*CategoryResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(CategoryResponse)
 	err := c.cc.Invoke(ctx, InventoryService_GetCategory_FullMethodName, in, out, cOpts...)
@@ -211,7 +211,7 @@ type InventoryServiceServer interface {
 	CreateInventory(context.Context, *CreateInventoryRequest) (*CreateInventoryResponse, error)
 	GetCategories(context.Context, *EmptyRequest) (*AllCategoryResponse, error)
 	GetSubCategories(context.Context, *EmptyRequest) (*AllSubCategoryResponse, error)
-	GetCategory(context.Context, *ResourceId) (*CategoryResponse, error)
+	GetCategory(context.Context, *GetCategoryByIDPayload) (*CategoryResponse, error)
 	GetCategorySubcategories(context.Context, *ResourceId) (*AllSubCategoryResponse, error)
 	RateInventory(context.Context, *InventoryRatingRequest) (*InventoryRatingResponse, error)
 	RateUser(context.Context, *UserRatingRequest) (*UserRatingResponse, error)
@@ -243,7 +243,7 @@ func (UnimplementedInventoryServiceServer) GetCategories(context.Context, *Empty
 func (UnimplementedInventoryServiceServer) GetSubCategories(context.Context, *EmptyRequest) (*AllSubCategoryResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetSubCategories not implemented")
 }
-func (UnimplementedInventoryServiceServer) GetCategory(context.Context, *ResourceId) (*CategoryResponse, error) {
+func (UnimplementedInventoryServiceServer) GetCategory(context.Context, *GetCategoryByIDPayload) (*CategoryResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetCategory not implemented")
 }
 func (UnimplementedInventoryServiceServer) GetCategorySubcategories(context.Context, *ResourceId) (*AllSubCategoryResponse, error) {
@@ -367,7 +367,7 @@ func _InventoryService_GetSubCategories_Handler(srv interface{}, ctx context.Con
 }
 
 func _InventoryService_GetCategory_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(ResourceId)
+	in := new(GetCategoryByIDPayload)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -379,7 +379,7 @@ func _InventoryService_GetCategory_Handler(srv interface{}, ctx context.Context,
 		FullMethod: InventoryService_GetCategory_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(InventoryServiceServer).GetCategory(ctx, req.(*ResourceId))
+		return srv.(InventoryServiceServer).GetCategory(ctx, req.(*GetCategoryByIDPayload))
 	}
 	return interceptor(ctx, in, info, handler)
 }

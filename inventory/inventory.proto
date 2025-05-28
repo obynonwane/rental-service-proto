@@ -34,7 +34,7 @@ service InventoryService {
     rpc CreateInventory (CreateInventoryRequest) returns (CreateInventoryResponse);
     rpc GetCategories (EmptyRequest) returns (AllCategoryResponse);
     rpc GetSubCategories (EmptyRequest) returns (AllSubCategoryResponse);
-    rpc GetCategory (ResourceId) returns (CategoryResponse);
+    rpc GetCategory (GetCategoryByIDPayload) returns (CategoryResponse);
     rpc GetCategorySubcategories (ResourceId) returns (AllSubCategoryResponse);
     rpc RateInventory (InventoryRatingRequest) returns (InventoryRatingResponse);
     rpc RateUser (UserRatingRequest) returns (UserRatingResponse);
