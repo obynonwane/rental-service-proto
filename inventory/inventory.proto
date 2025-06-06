@@ -373,6 +373,17 @@ message Inventory {
   string lga_slug = 26;
   string category_slug = 27;
   string subcategory_slug = 28;
+
+
+    string product_purpose = 29;
+    double quantity = 30;
+    string is_available = 31;
+    string rental_duration = 32;
+    double security_deposit = 33;
+    string tags = 34;
+    string metadata = 35;
+    string negotiable = 36;
+    ImageData primary_image = 37;
 }
 
 // One image associated with an inventory item.
