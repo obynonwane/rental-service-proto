@@ -383,7 +383,7 @@ message Inventory {
     string tags = 34;
     string metadata = 35;
     string negotiable = 36;
-    string primary_image = 37;
+    optional string primary_image = 37;
 }
 
 // One image associated with an inventory item.
