@@ -94,10 +94,10 @@ message CreateInventoryRequest {
     double offer_price = 10; // Changed to double
 
     string product_purpose = 11;
-    string quantity = 12;
+    double quantity = 12;
     string is_available = 13;
     string rental_duration = 14;
-    string security_deposit = 15;
+    double security_deposit = 15;
     string tags = 16;
     string metadata = 17;
     string negotiable = 18;
