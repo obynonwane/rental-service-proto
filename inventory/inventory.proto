@@ -203,6 +203,10 @@ message InventoryResponseDetail{
     Inventory inventory = 1;
     User user = 2;
     repeated InventoryImage images = 3;
+    Country country  = 4;
+    LGA lga  = 5;
+    State state  = 6;
+    
 }
 
 message InventoryResponse{
