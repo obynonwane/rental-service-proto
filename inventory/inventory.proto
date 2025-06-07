@@ -223,7 +223,17 @@ message InventoryResponse{
     string country_slug = 15;
     string lga_slug = 16;
     string category_slug = 17;
-    string subcategory_slug = 18;
+    string subcategory_slug = 18;   
+
+    string product_purpose = 19;
+    double quantity = 20;
+    string is_available = 21;
+    string rental_duration = 22;
+    double security_deposit = 23;
+    string tags = 24;
+    string metadata = 25;
+    string negotiable = 26;
+    string primary_image = 27;
 }
 
 
@@ -375,15 +385,15 @@ message Inventory {
   string subcategory_slug = 28;
 
 
-    string product_purpose = 29;
-    double quantity = 30;
-    string is_available = 31;
-    string rental_duration = 32;
-    double security_deposit = 33;
-    string tags = 34;
-    string metadata = 35;
-    string negotiable = 36;
-    string primary_image = 37;
+ string product_purpose = 29;
+ double quantity = 30;
+ string is_available = 31;
+ string rental_duration = 32;
+ double security_deposit = 33;
+ string tags = 34;
+ string metadata = 35;
+ string negotiable = 36;
+ string primary_image = 37;
 }
 
 // One image associated with an inventory item.
