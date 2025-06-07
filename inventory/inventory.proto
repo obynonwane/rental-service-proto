@@ -206,6 +206,8 @@ message InventoryResponseDetail{
     Country country  = 4;
     LGA lga  = 5;
     State state  = 6;
+    CategoryResponse category  = 7;
+    SubCategoryResponse subcategory  = 8;
     
 }
 
