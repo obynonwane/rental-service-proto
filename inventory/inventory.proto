@@ -102,6 +102,7 @@ message CreateInventoryRequest {
     string metadata = 17;
     string negotiable = 18;
     ImageData primary_image = 19;
+    ImageData minimum_price = 20;
 }
 
 message CreateInventoryResponse {
@@ -241,6 +242,7 @@ message InventoryResponse{
     string metadata = 25;
     string negotiable = 26;
     string primary_image = 27;
+    string minimum_price = 28;
 }
 
 
@@ -401,6 +403,7 @@ message Inventory {
  string metadata = 35;
  string negotiable = 36;
  string primary_image = 37;
+ string minimum_price = 38;
 }
 
 // One image associated with an inventory item.
