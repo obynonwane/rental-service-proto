@@ -404,6 +404,9 @@ message Inventory {
  string negotiable = 36;
  string primary_image = 37;
  double minimum_price = 38;
+
+ CategoryResponse   category           = 39;
+ SubCategoryResponse   sub_category           = 40;
 }
 
 // One image associated with an inventory item.
