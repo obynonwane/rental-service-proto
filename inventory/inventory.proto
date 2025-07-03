@@ -409,6 +409,7 @@ message Inventory {
  SubCategoryResponse   sub_category           = 40;
  optional double average_rating = 41;
  optional int32 total_ratings = 42;
+ optional bool user_verified = 43;
 }
 
 // One image associated with an inventory item.
