@@ -103,6 +103,10 @@ message CreateInventoryRequest {
     string negotiable = 18;
     ImageData primary_image = 19;
     double minimum_price = 20;
+
+    string condition = 21;
+    string usage_guide = 22;
+    string included = 23;
 }
 
 message CreateInventoryResponse {
