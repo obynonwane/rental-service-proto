@@ -416,6 +416,8 @@ message Inventory {
  optional double average_rating = 41;
  optional int32 total_ratings = 42;
  optional bool user_verified = 43;
+ optional int32 total_user_rating  = 44;
+ optional double average_user_rating  = 45;
 }
 
 // One image associated with an inventory item.
