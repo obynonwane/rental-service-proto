@@ -130,6 +130,7 @@ message CategoryResponse{
     int32 status_code = 9;
     string category_slug = 10;
     repeated SubCategoryResponse subcategories = 11;
+    int32 inventory_count = 12;
 }
 
 message SubCategoryResponse{
@@ -144,6 +145,7 @@ message SubCategoryResponse{
     string updated_at_human = 9;              // Human-readable timestamp
     int32 status_code = 10;
     string subcategory_slug = 11;
+    int32 inventory_count = 12;
 }
 
 message AllCategoryResponse {
