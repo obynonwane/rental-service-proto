@@ -405,8 +405,8 @@ message Inventory {
  string is_available = 31;
  string rental_duration = 32;
  double security_deposit = 33;
- string tags = 34;
- string metadata = 35;
+ optional string tags = 34;
+ optional string metadata = 35;
  string negotiable = 36;
  string primary_image = 37;
  double minimum_price = 38;
