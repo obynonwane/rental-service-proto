@@ -1,6 +1,7 @@
 syntax = "proto3";
 
 import "google/protobuf/timestamp.proto";
+import "google/protobuf/wrappers.proto";
 package inventory;
 option go_package = "github.com/obynonwane/rental-service-proto/inventory";
 
@@ -405,7 +406,7 @@ message Inventory {
  string is_available = 31;
  string rental_duration = 32;
  double security_deposit = 33;
- optional string tags = 34;
+ google.protobuf.StringValue   tags = 34;
  optional string metadata = 35;
  string negotiable = 36;
  string primary_image = 37;
