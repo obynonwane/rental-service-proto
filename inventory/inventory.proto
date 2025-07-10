@@ -423,6 +423,8 @@ message Inventory {
  optional string condition = 46;
  optional string usage_guide = 47;
  optional string included = 48;
+
+ optional int32 total_user_listing  = 49;
 }
 
 // One image associated with an inventory item.
