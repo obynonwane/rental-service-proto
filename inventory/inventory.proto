@@ -418,6 +418,10 @@ message Inventory {
  optional bool user_verified = 43;
  optional int32 total_user_rating  = 44;
  optional double average_user_rating  = 45;
+
+ optional string condition = 46;
+ optional string usage_guide = 47;
+ optional string included = 48;
 }
 
 // One image associated with an inventory item.
