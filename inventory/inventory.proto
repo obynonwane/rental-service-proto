@@ -329,6 +329,8 @@ message SearchInventoryRequest {
   string lga_slug = 12;
   string category_slug = 13;
   string subcategory_slug = 14;
+  string user_id = 15;
+  string product_purpose = 16;
 }
 
 
