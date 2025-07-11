@@ -63,6 +63,7 @@ message User {
     google.protobuf.Timestamp updated_at = 9;
     string created_at_human = 10;              // Human-readable timestamp
     string updated_at_human = 11;              // Human-readable timestamp
+    string profile_img = 12;             
 }
   
 // Response message containing a list of users
