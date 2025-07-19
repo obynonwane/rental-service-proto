@@ -64,6 +64,7 @@ message User {
     string created_at_human = 10;              // Human-readable timestamp
     string updated_at_human = 11;              // Human-readable timestamp
     optional string profile_img = 12;             
+    optional string user_slug = 13;             
 }
   
 // Response message containing a list of users
