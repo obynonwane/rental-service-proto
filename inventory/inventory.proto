@@ -332,6 +332,7 @@ message SearchInventoryRequest {
   string subcategory_slug = 14;
   string user_id = 15;
   string product_purpose = 16;
+  string user_slug = 17;
 }
 
 
