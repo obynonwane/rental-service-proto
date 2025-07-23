@@ -204,7 +204,8 @@ message UserRatingResponse {
     string created_at_human = 8;              // Human-readable timestamp
     string updated_at_human = 9; 
     User rater = 10;
-    int32 replies_count  = 11;
+    optional int32 replies_count  = 11;
+
 }
 
 
