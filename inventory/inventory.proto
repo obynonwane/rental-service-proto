@@ -338,6 +338,7 @@ message SearchInventoryRequest {
   string user_id = 15;
   string product_purpose = 16;
   string user_slug = 17;
+  string subdomain = 18;
 }
 
 
