@@ -210,10 +210,52 @@ message UserRatingResponse {
 
 }
 
+message Plan {
+  string id = 1;
+  string name = 2;
+  double monthly_price = 3;
+  double annual_price = 4;
+  google.protobuf.Timestamp created_at = 5;
+  google.protobuf.Timestamp updated_at = 6;
+}
+
+message BusinessKyc {
+  string id = 1;
+  string address = 2;
+  google.protobuf.StringValue cac_number = 3;
+  string display_name = 4;
+  string description = 5;
+  optional string key_bonus = 6;
+  string business_registered = 7; // e.g., "YES" or "NO"
+
+  string user_id = 8;
+  User user = 9;
+
+  string country_id = 10;
+  Country country = 11;
+
+  string state_id = 12;
+  State state = 13;
+
+  string lga_id = 14;
+  LGA lga = 15;
+
+  string plan_id = 16;
+  optional Plan plan = 17;
+
+  bool verified = 18;
+  bool active_plan = 19;
+
+  optional string shop_banner = 20;
+  string industries = 21;
+
+  optional string subdomain = 22;
+  google.protobuf.Timestamp updated_at = 23;
+  google.protobuf.Timestamp created_at = 24;
+}
 
 
 message InventoryResponseDetail{
-    // InventoryResponse inventory = 1;
     Inventory inventory = 1;
     User user = 2;
     repeated InventoryImage images = 3;
@@ -222,7 +264,7 @@ message InventoryResponseDetail{
     State state  = 6;
     CategoryResponse category  = 7;
     SubCategoryResponse subcategory  = 8;
-    
+    BusinessKyc business_kyc = 9;
 }
 
 message InventoryResponse{

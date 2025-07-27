@@ -1558,12 +1558,325 @@ func (x *UserRatingResponse) GetRepliesCount() *wrapperspb.Int32Value {
 	return nil
 }
 
+type Plan struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Id           string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	Name         string                 `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
+	MonthlyPrice float64                `protobuf:"fixed64,3,opt,name=monthly_price,json=monthlyPrice,proto3" json:"monthly_price,omitempty"`
+	AnnualPrice  float64                `protobuf:"fixed64,4,opt,name=annual_price,json=annualPrice,proto3" json:"annual_price,omitempty"`
+	CreatedAt    *timestamppb.Timestamp `protobuf:"bytes,5,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
+	UpdatedAt    *timestamppb.Timestamp `protobuf:"bytes,6,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
+}
+
+func (x *Plan) Reset() {
+	*x = Plan{}
+	mi := &file_inventory_inventory_proto_msgTypes[18]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *Plan) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*Plan) ProtoMessage() {}
+
+func (x *Plan) ProtoReflect() protoreflect.Message {
+	mi := &file_inventory_inventory_proto_msgTypes[18]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use Plan.ProtoReflect.Descriptor instead.
+func (*Plan) Descriptor() ([]byte, []int) {
+	return file_inventory_inventory_proto_rawDescGZIP(), []int{18}
+}
+
+func (x *Plan) GetId() string {
+	if x != nil {
+		return x.Id
+	}
+	return ""
+}
+
+func (x *Plan) GetName() string {
+	if x != nil {
+		return x.Name
+	}
+	return ""
+}
+
+func (x *Plan) GetMonthlyPrice() float64 {
+	if x != nil {
+		return x.MonthlyPrice
+	}
+	return 0
+}
+
+func (x *Plan) GetAnnualPrice() float64 {
+	if x != nil {
+		return x.AnnualPrice
+	}
+	return 0
+}
+
+func (x *Plan) GetCreatedAt() *timestamppb.Timestamp {
+	if x != nil {
+		return x.CreatedAt
+	}
+	return nil
+}
+
+func (x *Plan) GetUpdatedAt() *timestamppb.Timestamp {
+	if x != nil {
+		return x.UpdatedAt
+	}
+	return nil
+}
+
+type BusinessKyc struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Id                 string                  `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	Address            string                  `protobuf:"bytes,2,opt,name=address,proto3" json:"address,omitempty"`
+	CacNumber          *wrapperspb.StringValue `protobuf:"bytes,3,opt,name=cac_number,json=cacNumber,proto3" json:"cac_number,omitempty"`
+	DisplayName        string                  `protobuf:"bytes,4,opt,name=display_name,json=displayName,proto3" json:"display_name,omitempty"`
+	Description        string                  `protobuf:"bytes,5,opt,name=description,proto3" json:"description,omitempty"`
+	KeyBonus           *string                 `protobuf:"bytes,6,opt,name=key_bonus,json=keyBonus,proto3,oneof" json:"key_bonus,omitempty"`
+	BusinessRegistered string                  `protobuf:"bytes,7,opt,name=business_registered,json=businessRegistered,proto3" json:"business_registered,omitempty"` // e.g., "YES" or "NO"
+	UserId             string                  `protobuf:"bytes,8,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
+	User               *User                   `protobuf:"bytes,9,opt,name=user,proto3" json:"user,omitempty"`
+	CountryId          string                  `protobuf:"bytes,10,opt,name=country_id,json=countryId,proto3" json:"country_id,omitempty"`
+	Country            *Country                `protobuf:"bytes,11,opt,name=country,proto3" json:"country,omitempty"`
+	StateId            string                  `protobuf:"bytes,12,opt,name=state_id,json=stateId,proto3" json:"state_id,omitempty"`
+	State              *State                  `protobuf:"bytes,13,opt,name=state,proto3" json:"state,omitempty"`
+	LgaId              string                  `protobuf:"bytes,14,opt,name=lga_id,json=lgaId,proto3" json:"lga_id,omitempty"`
+	Lga                *LGA                    `protobuf:"bytes,15,opt,name=lga,proto3" json:"lga,omitempty"`
+	PlanId             string                  `protobuf:"bytes,16,opt,name=plan_id,json=planId,proto3" json:"plan_id,omitempty"`
+	Plan               *Plan                   `protobuf:"bytes,17,opt,name=plan,proto3,oneof" json:"plan,omitempty"`
+	Verified           bool                    `protobuf:"varint,18,opt,name=verified,proto3" json:"verified,omitempty"`
+	ActivePlan         bool                    `protobuf:"varint,19,opt,name=active_plan,json=activePlan,proto3" json:"active_plan,omitempty"`
+	ShopBanner         *string                 `protobuf:"bytes,20,opt,name=shop_banner,json=shopBanner,proto3,oneof" json:"shop_banner,omitempty"`
+	Industries         string                  `protobuf:"bytes,21,opt,name=industries,proto3" json:"industries,omitempty"`
+	Subdomain          *string                 `protobuf:"bytes,22,opt,name=subdomain,proto3,oneof" json:"subdomain,omitempty"`
+	UpdatedAt          *timestamppb.Timestamp  `protobuf:"bytes,23,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
+	CreatedAt          *timestamppb.Timestamp  `protobuf:"bytes,24,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
+}
+
+func (x *BusinessKyc) Reset() {
+	*x = BusinessKyc{}
+	mi := &file_inventory_inventory_proto_msgTypes[19]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *BusinessKyc) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*BusinessKyc) ProtoMessage() {}
+
+func (x *BusinessKyc) ProtoReflect() protoreflect.Message {
+	mi := &file_inventory_inventory_proto_msgTypes[19]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use BusinessKyc.ProtoReflect.Descriptor instead.
+func (*BusinessKyc) Descriptor() ([]byte, []int) {
+	return file_inventory_inventory_proto_rawDescGZIP(), []int{19}
+}
+
+func (x *BusinessKyc) GetId() string {
+	if x != nil {
+		return x.Id
+	}
+	return ""
+}
+
+func (x *BusinessKyc) GetAddress() string {
+	if x != nil {
+		return x.Address
+	}
+	return ""
+}
+
+func (x *BusinessKyc) GetCacNumber() *wrapperspb.StringValue {
+	if x != nil {
+		return x.CacNumber
+	}
+	return nil
+}
+
+func (x *BusinessKyc) GetDisplayName() string {
+	if x != nil {
+		return x.DisplayName
+	}
+	return ""
+}
+
+func (x *BusinessKyc) GetDescription() string {
+	if x != nil {
+		return x.Description
+	}
+	return ""
+}
+
+func (x *BusinessKyc) GetKeyBonus() string {
+	if x != nil && x.KeyBonus != nil {
+		return *x.KeyBonus
+	}
+	return ""
+}
+
+func (x *BusinessKyc) GetBusinessRegistered() string {
+	if x != nil {
+		return x.BusinessRegistered
+	}
+	return ""
+}
+
+func (x *BusinessKyc) GetUserId() string {
+	if x != nil {
+		return x.UserId
+	}
+	return ""
+}
+
+func (x *BusinessKyc) GetUser() *User {
+	if x != nil {
+		return x.User
+	}
+	return nil
+}
+
+func (x *BusinessKyc) GetCountryId() string {
+	if x != nil {
+		return x.CountryId
+	}
+	return ""
+}
+
+func (x *BusinessKyc) GetCountry() *Country {
+	if x != nil {
+		return x.Country
+	}
+	return nil
+}
+
+func (x *BusinessKyc) GetStateId() string {
+	if x != nil {
+		return x.StateId
+	}
+	return ""
+}
+
+func (x *BusinessKyc) GetState() *State {
+	if x != nil {
+		return x.State
+	}
+	return nil
+}
+
+func (x *BusinessKyc) GetLgaId() string {
+	if x != nil {
+		return x.LgaId
+	}
+	return ""
+}
+
+func (x *BusinessKyc) GetLga() *LGA {
+	if x != nil {
+		return x.Lga
+	}
+	return nil
+}
+
+func (x *BusinessKyc) GetPlanId() string {
+	if x != nil {
+		return x.PlanId
+	}
+	return ""
+}
+
+func (x *BusinessKyc) GetPlan() *Plan {
+	if x != nil {
+		return x.Plan
+	}
+	return nil
+}
+
+func (x *BusinessKyc) GetVerified() bool {
+	if x != nil {
+		return x.Verified
+	}
+	return false
+}
+
+func (x *BusinessKyc) GetActivePlan() bool {
+	if x != nil {
+		return x.ActivePlan
+	}
+	return false
+}
+
+func (x *BusinessKyc) GetShopBanner() string {
+	if x != nil && x.ShopBanner != nil {
+		return *x.ShopBanner
+	}
+	return ""
+}
+
+func (x *BusinessKyc) GetIndustries() string {
+	if x != nil {
+		return x.Industries
+	}
+	return ""
+}
+
+func (x *BusinessKyc) GetSubdomain() string {
+	if x != nil && x.Subdomain != nil {
+		return *x.Subdomain
+	}
+	return ""
+}
+
+func (x *BusinessKyc) GetUpdatedAt() *timestamppb.Timestamp {
+	if x != nil {
+		return x.UpdatedAt
+	}
+	return nil
+}
+
+func (x *BusinessKyc) GetCreatedAt() *timestamppb.Timestamp {
+	if x != nil {
+		return x.CreatedAt
+	}
+	return nil
+}
+
 type InventoryResponseDetail struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// InventoryResponse inventory = 1;
 	Inventory   *Inventory           `protobuf:"bytes,1,opt,name=inventory,proto3" json:"inventory,omitempty"`
 	User        *User                `protobuf:"bytes,2,opt,name=user,proto3" json:"user,omitempty"`
 	Images      []*InventoryImage    `protobuf:"bytes,3,rep,name=images,proto3" json:"images,omitempty"`
@@ -1572,11 +1885,12 @@ type InventoryResponseDetail struct {
 	State       *State               `protobuf:"bytes,6,opt,name=state,proto3" json:"state,omitempty"`
 	Category    *CategoryResponse    `protobuf:"bytes,7,opt,name=category,proto3" json:"category,omitempty"`
 	Subcategory *SubCategoryResponse `protobuf:"bytes,8,opt,name=subcategory,proto3" json:"subcategory,omitempty"`
+	BusinessKyc *BusinessKyc         `protobuf:"bytes,9,opt,name=business_kyc,json=businessKyc,proto3" json:"business_kyc,omitempty"`
 }
 
 func (x *InventoryResponseDetail) Reset() {
 	*x = InventoryResponseDetail{}
-	mi := &file_inventory_inventory_proto_msgTypes[18]
+	mi := &file_inventory_inventory_proto_msgTypes[20]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1588,7 +1902,7 @@ func (x *InventoryResponseDetail) String() string {
 func (*InventoryResponseDetail) ProtoMessage() {}
 
 func (x *InventoryResponseDetail) ProtoReflect() protoreflect.Message {
-	mi := &file_inventory_inventory_proto_msgTypes[18]
+	mi := &file_inventory_inventory_proto_msgTypes[20]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1601,7 +1915,7 @@ func (x *InventoryResponseDetail) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use InventoryResponseDetail.ProtoReflect.Descriptor instead.
 func (*InventoryResponseDetail) Descriptor() ([]byte, []int) {
-	return file_inventory_inventory_proto_rawDescGZIP(), []int{18}
+	return file_inventory_inventory_proto_rawDescGZIP(), []int{20}
 }
 
 func (x *InventoryResponseDetail) GetInventory() *Inventory {
@@ -1660,6 +1974,13 @@ func (x *InventoryResponseDetail) GetSubcategory() *SubCategoryResponse {
 	return nil
 }
 
+func (x *InventoryResponseDetail) GetBusinessKyc() *BusinessKyc {
+	if x != nil {
+		return x.BusinessKyc
+	}
+	return nil
+}
+
 type InventoryResponse struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -1697,7 +2018,7 @@ type InventoryResponse struct {
 
 func (x *InventoryResponse) Reset() {
 	*x = InventoryResponse{}
-	mi := &file_inventory_inventory_proto_msgTypes[19]
+	mi := &file_inventory_inventory_proto_msgTypes[21]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1709,7 +2030,7 @@ func (x *InventoryResponse) String() string {
 func (*InventoryResponse) ProtoMessage() {}
 
 func (x *InventoryResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_inventory_inventory_proto_msgTypes[19]
+	mi := &file_inventory_inventory_proto_msgTypes[21]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1722,7 +2043,7 @@ func (x *InventoryResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use InventoryResponse.ProtoReflect.Descriptor instead.
 func (*InventoryResponse) Descriptor() ([]byte, []int) {
-	return file_inventory_inventory_proto_rawDescGZIP(), []int{19}
+	return file_inventory_inventory_proto_rawDescGZIP(), []int{21}
 }
 
 func (x *InventoryResponse) GetId() string {
@@ -1934,7 +2255,7 @@ type UserRatingsResponse struct {
 
 func (x *UserRatingsResponse) Reset() {
 	*x = UserRatingsResponse{}
-	mi := &file_inventory_inventory_proto_msgTypes[20]
+	mi := &file_inventory_inventory_proto_msgTypes[22]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1946,7 +2267,7 @@ func (x *UserRatingsResponse) String() string {
 func (*UserRatingsResponse) ProtoMessage() {}
 
 func (x *UserRatingsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_inventory_inventory_proto_msgTypes[20]
+	mi := &file_inventory_inventory_proto_msgTypes[22]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1959,7 +2280,7 @@ func (x *UserRatingsResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UserRatingsResponse.ProtoReflect.Descriptor instead.
 func (*UserRatingsResponse) Descriptor() ([]byte, []int) {
-	return file_inventory_inventory_proto_rawDescGZIP(), []int{20}
+	return file_inventory_inventory_proto_rawDescGZIP(), []int{22}
 }
 
 func (x *UserRatingsResponse) GetUserRatings() []*UserRatingResponse {
@@ -2003,7 +2324,7 @@ type InventoryRatingsResponse struct {
 
 func (x *InventoryRatingsResponse) Reset() {
 	*x = InventoryRatingsResponse{}
-	mi := &file_inventory_inventory_proto_msgTypes[21]
+	mi := &file_inventory_inventory_proto_msgTypes[23]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2015,7 +2336,7 @@ func (x *InventoryRatingsResponse) String() string {
 func (*InventoryRatingsResponse) ProtoMessage() {}
 
 func (x *InventoryRatingsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_inventory_inventory_proto_msgTypes[21]
+	mi := &file_inventory_inventory_proto_msgTypes[23]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2028,7 +2349,7 @@ func (x *InventoryRatingsResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use InventoryRatingsResponse.ProtoReflect.Descriptor instead.
 func (*InventoryRatingsResponse) Descriptor() ([]byte, []int) {
-	return file_inventory_inventory_proto_rawDescGZIP(), []int{21}
+	return file_inventory_inventory_proto_rawDescGZIP(), []int{23}
 }
 
 func (x *InventoryRatingsResponse) GetInventoryRatings() []*InventoryRatingResponse {
@@ -2074,7 +2395,7 @@ type RatingSummary struct {
 
 func (x *RatingSummary) Reset() {
 	*x = RatingSummary{}
-	mi := &file_inventory_inventory_proto_msgTypes[22]
+	mi := &file_inventory_inventory_proto_msgTypes[24]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2086,7 +2407,7 @@ func (x *RatingSummary) String() string {
 func (*RatingSummary) ProtoMessage() {}
 
 func (x *RatingSummary) ProtoReflect() protoreflect.Message {
-	mi := &file_inventory_inventory_proto_msgTypes[22]
+	mi := &file_inventory_inventory_proto_msgTypes[24]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2099,7 +2420,7 @@ func (x *RatingSummary) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RatingSummary.ProtoReflect.Descriptor instead.
 func (*RatingSummary) Descriptor() ([]byte, []int) {
-	return file_inventory_inventory_proto_rawDescGZIP(), []int{22}
+	return file_inventory_inventory_proto_rawDescGZIP(), []int{24}
 }
 
 func (x *RatingSummary) GetFiveStar() int32 {
@@ -2157,7 +2478,7 @@ type ReplyToRatingRequest struct {
 
 func (x *ReplyToRatingRequest) Reset() {
 	*x = ReplyToRatingRequest{}
-	mi := &file_inventory_inventory_proto_msgTypes[23]
+	mi := &file_inventory_inventory_proto_msgTypes[25]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2169,7 +2490,7 @@ func (x *ReplyToRatingRequest) String() string {
 func (*ReplyToRatingRequest) ProtoMessage() {}
 
 func (x *ReplyToRatingRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_inventory_inventory_proto_msgTypes[23]
+	mi := &file_inventory_inventory_proto_msgTypes[25]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2182,7 +2503,7 @@ func (x *ReplyToRatingRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ReplyToRatingRequest.ProtoReflect.Descriptor instead.
 func (*ReplyToRatingRequest) Descriptor() ([]byte, []int) {
-	return file_inventory_inventory_proto_rawDescGZIP(), []int{23}
+	return file_inventory_inventory_proto_rawDescGZIP(), []int{25}
 }
 
 func (x *ReplyToRatingRequest) GetRatingId() string {
@@ -2231,7 +2552,7 @@ type ReplyToRatingResponse struct {
 
 func (x *ReplyToRatingResponse) Reset() {
 	*x = ReplyToRatingResponse{}
-	mi := &file_inventory_inventory_proto_msgTypes[24]
+	mi := &file_inventory_inventory_proto_msgTypes[26]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2243,7 +2564,7 @@ func (x *ReplyToRatingResponse) String() string {
 func (*ReplyToRatingResponse) ProtoMessage() {}
 
 func (x *ReplyToRatingResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_inventory_inventory_proto_msgTypes[24]
+	mi := &file_inventory_inventory_proto_msgTypes[26]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2256,7 +2577,7 @@ func (x *ReplyToRatingResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ReplyToRatingResponse.ProtoReflect.Descriptor instead.
 func (*ReplyToRatingResponse) Descriptor() ([]byte, []int) {
-	return file_inventory_inventory_proto_rawDescGZIP(), []int{24}
+	return file_inventory_inventory_proto_rawDescGZIP(), []int{26}
 }
 
 func (x *ReplyToRatingResponse) GetId() string {
@@ -2339,7 +2660,7 @@ type InventoryRatingReplyResponse struct {
 
 func (x *InventoryRatingReplyResponse) Reset() {
 	*x = InventoryRatingReplyResponse{}
-	mi := &file_inventory_inventory_proto_msgTypes[25]
+	mi := &file_inventory_inventory_proto_msgTypes[27]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2351,7 +2672,7 @@ func (x *InventoryRatingReplyResponse) String() string {
 func (*InventoryRatingReplyResponse) ProtoMessage() {}
 
 func (x *InventoryRatingReplyResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_inventory_inventory_proto_msgTypes[25]
+	mi := &file_inventory_inventory_proto_msgTypes[27]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2364,7 +2685,7 @@ func (x *InventoryRatingReplyResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use InventoryRatingReplyResponse.ProtoReflect.Descriptor instead.
 func (*InventoryRatingReplyResponse) Descriptor() ([]byte, []int) {
-	return file_inventory_inventory_proto_rawDescGZIP(), []int{25}
+	return file_inventory_inventory_proto_rawDescGZIP(), []int{27}
 }
 
 func (x *InventoryRatingReplyResponse) GetId() string {
@@ -2451,7 +2772,7 @@ type SearchInventoryRequest struct {
 
 func (x *SearchInventoryRequest) Reset() {
 	*x = SearchInventoryRequest{}
-	mi := &file_inventory_inventory_proto_msgTypes[26]
+	mi := &file_inventory_inventory_proto_msgTypes[28]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2463,7 +2784,7 @@ func (x *SearchInventoryRequest) String() string {
 func (*SearchInventoryRequest) ProtoMessage() {}
 
 func (x *SearchInventoryRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_inventory_inventory_proto_msgTypes[26]
+	mi := &file_inventory_inventory_proto_msgTypes[28]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2476,7 +2797,7 @@ func (x *SearchInventoryRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SearchInventoryRequest.ProtoReflect.Descriptor instead.
 func (*SearchInventoryRequest) Descriptor() ([]byte, []int) {
-	return file_inventory_inventory_proto_rawDescGZIP(), []int{26}
+	return file_inventory_inventory_proto_rawDescGZIP(), []int{28}
 }
 
 func (x *SearchInventoryRequest) GetCountryId() string {
@@ -2620,7 +2941,7 @@ type Country struct {
 
 func (x *Country) Reset() {
 	*x = Country{}
-	mi := &file_inventory_inventory_proto_msgTypes[27]
+	mi := &file_inventory_inventory_proto_msgTypes[29]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2632,7 +2953,7 @@ func (x *Country) String() string {
 func (*Country) ProtoMessage() {}
 
 func (x *Country) ProtoReflect() protoreflect.Message {
-	mi := &file_inventory_inventory_proto_msgTypes[27]
+	mi := &file_inventory_inventory_proto_msgTypes[29]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2645,7 +2966,7 @@ func (x *Country) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Country.ProtoReflect.Descriptor instead.
 func (*Country) Descriptor() ([]byte, []int) {
-	return file_inventory_inventory_proto_rawDescGZIP(), []int{27}
+	return file_inventory_inventory_proto_rawDescGZIP(), []int{29}
 }
 
 func (x *Country) GetId() string {
@@ -2707,7 +3028,7 @@ type State struct {
 
 func (x *State) Reset() {
 	*x = State{}
-	mi := &file_inventory_inventory_proto_msgTypes[28]
+	mi := &file_inventory_inventory_proto_msgTypes[30]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2719,7 +3040,7 @@ func (x *State) String() string {
 func (*State) ProtoMessage() {}
 
 func (x *State) ProtoReflect() protoreflect.Message {
-	mi := &file_inventory_inventory_proto_msgTypes[28]
+	mi := &file_inventory_inventory_proto_msgTypes[30]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2732,7 +3053,7 @@ func (x *State) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use State.ProtoReflect.Descriptor instead.
 func (*State) Descriptor() ([]byte, []int) {
-	return file_inventory_inventory_proto_rawDescGZIP(), []int{28}
+	return file_inventory_inventory_proto_rawDescGZIP(), []int{30}
 }
 
 func (x *State) GetId() string {
@@ -2807,7 +3128,7 @@ type LGA struct {
 
 func (x *LGA) Reset() {
 	*x = LGA{}
-	mi := &file_inventory_inventory_proto_msgTypes[29]
+	mi := &file_inventory_inventory_proto_msgTypes[31]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2819,7 +3140,7 @@ func (x *LGA) String() string {
 func (*LGA) ProtoMessage() {}
 
 func (x *LGA) ProtoReflect() protoreflect.Message {
-	mi := &file_inventory_inventory_proto_msgTypes[29]
+	mi := &file_inventory_inventory_proto_msgTypes[31]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2832,7 +3153,7 @@ func (x *LGA) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use LGA.ProtoReflect.Descriptor instead.
 func (*LGA) Descriptor() ([]byte, []int) {
-	return file_inventory_inventory_proto_rawDescGZIP(), []int{29}
+	return file_inventory_inventory_proto_rawDescGZIP(), []int{31}
 }
 
 func (x *LGA) GetId() string {
@@ -2945,7 +3266,7 @@ type Inventory struct {
 
 func (x *Inventory) Reset() {
 	*x = Inventory{}
-	mi := &file_inventory_inventory_proto_msgTypes[30]
+	mi := &file_inventory_inventory_proto_msgTypes[32]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2957,7 +3278,7 @@ func (x *Inventory) String() string {
 func (*Inventory) ProtoMessage() {}
 
 func (x *Inventory) ProtoReflect() protoreflect.Message {
-	mi := &file_inventory_inventory_proto_msgTypes[30]
+	mi := &file_inventory_inventory_proto_msgTypes[32]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2970,7 +3291,7 @@ func (x *Inventory) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Inventory.ProtoReflect.Descriptor instead.
 func (*Inventory) Descriptor() ([]byte, []int) {
-	return file_inventory_inventory_proto_rawDescGZIP(), []int{30}
+	return file_inventory_inventory_proto_rawDescGZIP(), []int{32}
 }
 
 func (x *Inventory) GetId() string {
@@ -3334,7 +3655,7 @@ type InventoryImage struct {
 
 func (x *InventoryImage) Reset() {
 	*x = InventoryImage{}
-	mi := &file_inventory_inventory_proto_msgTypes[31]
+	mi := &file_inventory_inventory_proto_msgTypes[33]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3346,7 +3667,7 @@ func (x *InventoryImage) String() string {
 func (*InventoryImage) ProtoMessage() {}
 
 func (x *InventoryImage) ProtoReflect() protoreflect.Message {
-	mi := &file_inventory_inventory_proto_msgTypes[31]
+	mi := &file_inventory_inventory_proto_msgTypes[33]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3359,7 +3680,7 @@ func (x *InventoryImage) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use InventoryImage.ProtoReflect.Descriptor instead.
 func (*InventoryImage) Descriptor() ([]byte, []int) {
-	return file_inventory_inventory_proto_rawDescGZIP(), []int{31}
+	return file_inventory_inventory_proto_rawDescGZIP(), []int{33}
 }
 
 func (x *InventoryImage) GetId() string {
@@ -3436,7 +3757,7 @@ type InventoryCollection struct {
 
 func (x *InventoryCollection) Reset() {
 	*x = InventoryCollection{}
-	mi := &file_inventory_inventory_proto_msgTypes[32]
+	mi := &file_inventory_inventory_proto_msgTypes[34]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3448,7 +3769,7 @@ func (x *InventoryCollection) String() string {
 func (*InventoryCollection) ProtoMessage() {}
 
 func (x *InventoryCollection) ProtoReflect() protoreflect.Message {
-	mi := &file_inventory_inventory_proto_msgTypes[32]
+	mi := &file_inventory_inventory_proto_msgTypes[34]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3461,7 +3782,7 @@ func (x *InventoryCollection) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use InventoryCollection.ProtoReflect.Descriptor instead.
 func (*InventoryCollection) Descriptor() ([]byte, []int) {
-	return file_inventory_inventory_proto_rawDescGZIP(), []int{32}
+	return file_inventory_inventory_proto_rawDescGZIP(), []int{34}
 }
 
 func (x *InventoryCollection) GetInventories() []*Inventory {
@@ -3503,7 +3824,7 @@ type GetCategoryByIDPayload struct {
 
 func (x *GetCategoryByIDPayload) Reset() {
 	*x = GetCategoryByIDPayload{}
-	mi := &file_inventory_inventory_proto_msgTypes[33]
+	mi := &file_inventory_inventory_proto_msgTypes[35]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3515,7 +3836,7 @@ func (x *GetCategoryByIDPayload) String() string {
 func (*GetCategoryByIDPayload) ProtoMessage() {}
 
 func (x *GetCategoryByIDPayload) ProtoReflect() protoreflect.Message {
-	mi := &file_inventory_inventory_proto_msgTypes[33]
+	mi := &file_inventory_inventory_proto_msgTypes[35]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3528,7 +3849,7 @@ func (x *GetCategoryByIDPayload) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetCategoryByIDPayload.ProtoReflect.Descriptor instead.
 func (*GetCategoryByIDPayload) Descriptor() ([]byte, []int) {
-	return file_inventory_inventory_proto_rawDescGZIP(), []int{33}
+	return file_inventory_inventory_proto_rawDescGZIP(), []int{35}
 }
 
 func (x *GetCategoryByIDPayload) GetCategoryId() string {
@@ -3828,32 +4149,109 @@ var file_inventory_inventory_proto_rawDesc = []byte{
 	0x6e, 0x74, 0x18, 0x0b, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x1b, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c,
 	0x65, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x75, 0x66, 0x2e, 0x49, 0x6e, 0x74, 0x33, 0x32,
 	0x56, 0x61, 0x6c, 0x75, 0x65, 0x52, 0x0c, 0x72, 0x65, 0x70, 0x6c, 0x69, 0x65, 0x73, 0x43, 0x6f,
-	0x75, 0x6e, 0x74, 0x22, 0x98, 0x03, 0x0a, 0x17, 0x49, 0x6e, 0x76, 0x65, 0x6e, 0x74, 0x6f, 0x72,
-	0x79, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x44, 0x65, 0x74, 0x61, 0x69, 0x6c, 0x12,
-	0x32, 0x0a, 0x09, 0x69, 0x6e, 0x76, 0x65, 0x6e, 0x74, 0x6f, 0x72, 0x79, 0x18, 0x01, 0x20, 0x01,
-	0x28, 0x0b, 0x32, 0x14, 0x2e, 0x69, 0x6e, 0x76, 0x65, 0x6e, 0x74, 0x6f, 0x72, 0x79, 0x2e, 0x49,
-	0x6e, 0x76, 0x65, 0x6e, 0x74, 0x6f, 0x72, 0x79, 0x52, 0x09, 0x69, 0x6e, 0x76, 0x65, 0x6e, 0x74,
-	0x6f, 0x72, 0x79, 0x12, 0x23, 0x0a, 0x04, 0x75, 0x73, 0x65, 0x72, 0x18, 0x02, 0x20, 0x01, 0x28,
-	0x0b, 0x32, 0x0f, 0x2e, 0x69, 0x6e, 0x76, 0x65, 0x6e, 0x74, 0x6f, 0x72, 0x79, 0x2e, 0x55, 0x73,
-	0x65, 0x72, 0x52, 0x04, 0x75, 0x73, 0x65, 0x72, 0x12, 0x31, 0x0a, 0x06, 0x69, 0x6d, 0x61, 0x67,
-	0x65, 0x73, 0x18, 0x03, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x19, 0x2e, 0x69, 0x6e, 0x76, 0x65, 0x6e,
-	0x74, 0x6f, 0x72, 0x79, 0x2e, 0x49, 0x6e, 0x76, 0x65, 0x6e, 0x74, 0x6f, 0x72, 0x79, 0x49, 0x6d,
-	0x61, 0x67, 0x65, 0x52, 0x06, 0x69, 0x6d, 0x61, 0x67, 0x65, 0x73, 0x12, 0x2c, 0x0a, 0x07, 0x63,
-	0x6f, 0x75, 0x6e, 0x74, 0x72, 0x79, 0x18, 0x04, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x12, 0x2e, 0x69,
-	0x6e, 0x76, 0x65, 0x6e, 0x74, 0x6f, 0x72, 0x79, 0x2e, 0x43, 0x6f, 0x75, 0x6e, 0x74, 0x72, 0x79,
-	0x52, 0x07, 0x63, 0x6f, 0x75, 0x6e, 0x74, 0x72, 0x79, 0x12, 0x20, 0x0a, 0x03, 0x6c, 0x67, 0x61,
-	0x18, 0x05, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x0e, 0x2e, 0x69, 0x6e, 0x76, 0x65, 0x6e, 0x74, 0x6f,
-	0x72, 0x79, 0x2e, 0x4c, 0x47, 0x41, 0x52, 0x03, 0x6c, 0x67, 0x61, 0x12, 0x26, 0x0a, 0x05, 0x73,
-	0x74, 0x61, 0x74, 0x65, 0x18, 0x06, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x10, 0x2e, 0x69, 0x6e, 0x76,
-	0x65, 0x6e, 0x74, 0x6f, 0x72, 0x79, 0x2e, 0x53, 0x74, 0x61, 0x74, 0x65, 0x52, 0x05, 0x73, 0x74,
-	0x61, 0x74, 0x65, 0x12, 0x37, 0x0a, 0x08, 0x63, 0x61, 0x74, 0x65, 0x67, 0x6f, 0x72, 0x79, 0x18,
-	0x07, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x1b, 0x2e, 0x69, 0x6e, 0x76, 0x65, 0x6e, 0x74, 0x6f, 0x72,
-	0x79, 0x2e, 0x43, 0x61, 0x74, 0x65, 0x67, 0x6f, 0x72, 0x79, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e,
-	0x73, 0x65, 0x52, 0x08, 0x63, 0x61, 0x74, 0x65, 0x67, 0x6f, 0x72, 0x79, 0x12, 0x40, 0x0a, 0x0b,
-	0x73, 0x75, 0x62, 0x63, 0x61, 0x74, 0x65, 0x67, 0x6f, 0x72, 0x79, 0x18, 0x08, 0x20, 0x01, 0x28,
-	0x0b, 0x32, 0x1e, 0x2e, 0x69, 0x6e, 0x76, 0x65, 0x6e, 0x74, 0x6f, 0x72, 0x79, 0x2e, 0x53, 0x75,
-	0x62, 0x43, 0x61, 0x74, 0x65, 0x67, 0x6f, 0x72, 0x79, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73,
-	0x65, 0x52, 0x0b, 0x73, 0x75, 0x62, 0x63, 0x61, 0x74, 0x65, 0x67, 0x6f, 0x72, 0x79, 0x22, 0xe6,
+	0x75, 0x6e, 0x74, 0x22, 0xe8, 0x01, 0x0a, 0x04, 0x50, 0x6c, 0x61, 0x6e, 0x12, 0x0e, 0x0a, 0x02,
+	0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x02, 0x69, 0x64, 0x12, 0x12, 0x0a, 0x04,
+	0x6e, 0x61, 0x6d, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x04, 0x6e, 0x61, 0x6d, 0x65,
+	0x12, 0x23, 0x0a, 0x0d, 0x6d, 0x6f, 0x6e, 0x74, 0x68, 0x6c, 0x79, 0x5f, 0x70, 0x72, 0x69, 0x63,
+	0x65, 0x18, 0x03, 0x20, 0x01, 0x28, 0x01, 0x52, 0x0c, 0x6d, 0x6f, 0x6e, 0x74, 0x68, 0x6c, 0x79,
+	0x50, 0x72, 0x69, 0x63, 0x65, 0x12, 0x21, 0x0a, 0x0c, 0x61, 0x6e, 0x6e, 0x75, 0x61, 0x6c, 0x5f,
+	0x70, 0x72, 0x69, 0x63, 0x65, 0x18, 0x04, 0x20, 0x01, 0x28, 0x01, 0x52, 0x0b, 0x61, 0x6e, 0x6e,
+	0x75, 0x61, 0x6c, 0x50, 0x72, 0x69, 0x63, 0x65, 0x12, 0x39, 0x0a, 0x0a, 0x63, 0x72, 0x65, 0x61,
+	0x74, 0x65, 0x64, 0x5f, 0x61, 0x74, 0x18, 0x05, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x1a, 0x2e, 0x67,
+	0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x75, 0x66, 0x2e, 0x54,
+	0x69, 0x6d, 0x65, 0x73, 0x74, 0x61, 0x6d, 0x70, 0x52, 0x09, 0x63, 0x72, 0x65, 0x61, 0x74, 0x65,
+	0x64, 0x41, 0x74, 0x12, 0x39, 0x0a, 0x0a, 0x75, 0x70, 0x64, 0x61, 0x74, 0x65, 0x64, 0x5f, 0x61,
+	0x74, 0x18, 0x06, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x1a, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65,
+	0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x75, 0x66, 0x2e, 0x54, 0x69, 0x6d, 0x65, 0x73, 0x74,
+	0x61, 0x6d, 0x70, 0x52, 0x09, 0x75, 0x70, 0x64, 0x61, 0x74, 0x65, 0x64, 0x41, 0x74, 0x22, 0xa7,
+	0x07, 0x0a, 0x0b, 0x42, 0x75, 0x73, 0x69, 0x6e, 0x65, 0x73, 0x73, 0x4b, 0x79, 0x63, 0x12, 0x0e,
+	0x0a, 0x02, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x02, 0x69, 0x64, 0x12, 0x18,
+	0x0a, 0x07, 0x61, 0x64, 0x64, 0x72, 0x65, 0x73, 0x73, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52,
+	0x07, 0x61, 0x64, 0x64, 0x72, 0x65, 0x73, 0x73, 0x12, 0x3b, 0x0a, 0x0a, 0x63, 0x61, 0x63, 0x5f,
+	0x6e, 0x75, 0x6d, 0x62, 0x65, 0x72, 0x18, 0x03, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x1c, 0x2e, 0x67,
+	0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x75, 0x66, 0x2e, 0x53,
+	0x74, 0x72, 0x69, 0x6e, 0x67, 0x56, 0x61, 0x6c, 0x75, 0x65, 0x52, 0x09, 0x63, 0x61, 0x63, 0x4e,
+	0x75, 0x6d, 0x62, 0x65, 0x72, 0x12, 0x21, 0x0a, 0x0c, 0x64, 0x69, 0x73, 0x70, 0x6c, 0x61, 0x79,
+	0x5f, 0x6e, 0x61, 0x6d, 0x65, 0x18, 0x04, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0b, 0x64, 0x69, 0x73,
+	0x70, 0x6c, 0x61, 0x79, 0x4e, 0x61, 0x6d, 0x65, 0x12, 0x20, 0x0a, 0x0b, 0x64, 0x65, 0x73, 0x63,
+	0x72, 0x69, 0x70, 0x74, 0x69, 0x6f, 0x6e, 0x18, 0x05, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0b, 0x64,
+	0x65, 0x73, 0x63, 0x72, 0x69, 0x70, 0x74, 0x69, 0x6f, 0x6e, 0x12, 0x20, 0x0a, 0x09, 0x6b, 0x65,
+	0x79, 0x5f, 0x62, 0x6f, 0x6e, 0x75, 0x73, 0x18, 0x06, 0x20, 0x01, 0x28, 0x09, 0x48, 0x00, 0x52,
+	0x08, 0x6b, 0x65, 0x79, 0x42, 0x6f, 0x6e, 0x75, 0x73, 0x88, 0x01, 0x01, 0x12, 0x2f, 0x0a, 0x13,
+	0x62, 0x75, 0x73, 0x69, 0x6e, 0x65, 0x73, 0x73, 0x5f, 0x72, 0x65, 0x67, 0x69, 0x73, 0x74, 0x65,
+	0x72, 0x65, 0x64, 0x18, 0x07, 0x20, 0x01, 0x28, 0x09, 0x52, 0x12, 0x62, 0x75, 0x73, 0x69, 0x6e,
+	0x65, 0x73, 0x73, 0x52, 0x65, 0x67, 0x69, 0x73, 0x74, 0x65, 0x72, 0x65, 0x64, 0x12, 0x17, 0x0a,
+	0x07, 0x75, 0x73, 0x65, 0x72, 0x5f, 0x69, 0x64, 0x18, 0x08, 0x20, 0x01, 0x28, 0x09, 0x52, 0x06,
+	0x75, 0x73, 0x65, 0x72, 0x49, 0x64, 0x12, 0x23, 0x0a, 0x04, 0x75, 0x73, 0x65, 0x72, 0x18, 0x09,
+	0x20, 0x01, 0x28, 0x0b, 0x32, 0x0f, 0x2e, 0x69, 0x6e, 0x76, 0x65, 0x6e, 0x74, 0x6f, 0x72, 0x79,
+	0x2e, 0x55, 0x73, 0x65, 0x72, 0x52, 0x04, 0x75, 0x73, 0x65, 0x72, 0x12, 0x1d, 0x0a, 0x0a, 0x63,
+	0x6f, 0x75, 0x6e, 0x74, 0x72, 0x79, 0x5f, 0x69, 0x64, 0x18, 0x0a, 0x20, 0x01, 0x28, 0x09, 0x52,
+	0x09, 0x63, 0x6f, 0x75, 0x6e, 0x74, 0x72, 0x79, 0x49, 0x64, 0x12, 0x2c, 0x0a, 0x07, 0x63, 0x6f,
+	0x75, 0x6e, 0x74, 0x72, 0x79, 0x18, 0x0b, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x12, 0x2e, 0x69, 0x6e,
+	0x76, 0x65, 0x6e, 0x74, 0x6f, 0x72, 0x79, 0x2e, 0x43, 0x6f, 0x75, 0x6e, 0x74, 0x72, 0x79, 0x52,
+	0x07, 0x63, 0x6f, 0x75, 0x6e, 0x74, 0x72, 0x79, 0x12, 0x19, 0x0a, 0x08, 0x73, 0x74, 0x61, 0x74,
+	0x65, 0x5f, 0x69, 0x64, 0x18, 0x0c, 0x20, 0x01, 0x28, 0x09, 0x52, 0x07, 0x73, 0x74, 0x61, 0x74,
+	0x65, 0x49, 0x64, 0x12, 0x26, 0x0a, 0x05, 0x73, 0x74, 0x61, 0x74, 0x65, 0x18, 0x0d, 0x20, 0x01,
+	0x28, 0x0b, 0x32, 0x10, 0x2e, 0x69, 0x6e, 0x76, 0x65, 0x6e, 0x74, 0x6f, 0x72, 0x79, 0x2e, 0x53,
+	0x74, 0x61, 0x74, 0x65, 0x52, 0x05, 0x73, 0x74, 0x61, 0x74, 0x65, 0x12, 0x15, 0x0a, 0x06, 0x6c,
+	0x67, 0x61, 0x5f, 0x69, 0x64, 0x18, 0x0e, 0x20, 0x01, 0x28, 0x09, 0x52, 0x05, 0x6c, 0x67, 0x61,
+	0x49, 0x64, 0x12, 0x20, 0x0a, 0x03, 0x6c, 0x67, 0x61, 0x18, 0x0f, 0x20, 0x01, 0x28, 0x0b, 0x32,
+	0x0e, 0x2e, 0x69, 0x6e, 0x76, 0x65, 0x6e, 0x74, 0x6f, 0x72, 0x79, 0x2e, 0x4c, 0x47, 0x41, 0x52,
+	0x03, 0x6c, 0x67, 0x61, 0x12, 0x17, 0x0a, 0x07, 0x70, 0x6c, 0x61, 0x6e, 0x5f, 0x69, 0x64, 0x18,
+	0x10, 0x20, 0x01, 0x28, 0x09, 0x52, 0x06, 0x70, 0x6c, 0x61, 0x6e, 0x49, 0x64, 0x12, 0x28, 0x0a,
+	0x04, 0x70, 0x6c, 0x61, 0x6e, 0x18, 0x11, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x0f, 0x2e, 0x69, 0x6e,
+	0x76, 0x65, 0x6e, 0x74, 0x6f, 0x72, 0x79, 0x2e, 0x50, 0x6c, 0x61, 0x6e, 0x48, 0x01, 0x52, 0x04,
+	0x70, 0x6c, 0x61, 0x6e, 0x88, 0x01, 0x01, 0x12, 0x1a, 0x0a, 0x08, 0x76, 0x65, 0x72, 0x69, 0x66,
+	0x69, 0x65, 0x64, 0x18, 0x12, 0x20, 0x01, 0x28, 0x08, 0x52, 0x08, 0x76, 0x65, 0x72, 0x69, 0x66,
+	0x69, 0x65, 0x64, 0x12, 0x1f, 0x0a, 0x0b, 0x61, 0x63, 0x74, 0x69, 0x76, 0x65, 0x5f, 0x70, 0x6c,
+	0x61, 0x6e, 0x18, 0x13, 0x20, 0x01, 0x28, 0x08, 0x52, 0x0a, 0x61, 0x63, 0x74, 0x69, 0x76, 0x65,
+	0x50, 0x6c, 0x61, 0x6e, 0x12, 0x24, 0x0a, 0x0b, 0x73, 0x68, 0x6f, 0x70, 0x5f, 0x62, 0x61, 0x6e,
+	0x6e, 0x65, 0x72, 0x18, 0x14, 0x20, 0x01, 0x28, 0x09, 0x48, 0x02, 0x52, 0x0a, 0x73, 0x68, 0x6f,
+	0x70, 0x42, 0x61, 0x6e, 0x6e, 0x65, 0x72, 0x88, 0x01, 0x01, 0x12, 0x1e, 0x0a, 0x0a, 0x69, 0x6e,
+	0x64, 0x75, 0x73, 0x74, 0x72, 0x69, 0x65, 0x73, 0x18, 0x15, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0a,
+	0x69, 0x6e, 0x64, 0x75, 0x73, 0x74, 0x72, 0x69, 0x65, 0x73, 0x12, 0x21, 0x0a, 0x09, 0x73, 0x75,
+	0x62, 0x64, 0x6f, 0x6d, 0x61, 0x69, 0x6e, 0x18, 0x16, 0x20, 0x01, 0x28, 0x09, 0x48, 0x03, 0x52,
+	0x09, 0x73, 0x75, 0x62, 0x64, 0x6f, 0x6d, 0x61, 0x69, 0x6e, 0x88, 0x01, 0x01, 0x12, 0x39, 0x0a,
+	0x0a, 0x75, 0x70, 0x64, 0x61, 0x74, 0x65, 0x64, 0x5f, 0x61, 0x74, 0x18, 0x17, 0x20, 0x01, 0x28,
+	0x0b, 0x32, 0x1a, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f,
+	0x62, 0x75, 0x66, 0x2e, 0x54, 0x69, 0x6d, 0x65, 0x73, 0x74, 0x61, 0x6d, 0x70, 0x52, 0x09, 0x75,
+	0x70, 0x64, 0x61, 0x74, 0x65, 0x64, 0x41, 0x74, 0x12, 0x39, 0x0a, 0x0a, 0x63, 0x72, 0x65, 0x61,
+	0x74, 0x65, 0x64, 0x5f, 0x61, 0x74, 0x18, 0x18, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x1a, 0x2e, 0x67,
+	0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x75, 0x66, 0x2e, 0x54,
+	0x69, 0x6d, 0x65, 0x73, 0x74, 0x61, 0x6d, 0x70, 0x52, 0x09, 0x63, 0x72, 0x65, 0x61, 0x74, 0x65,
+	0x64, 0x41, 0x74, 0x42, 0x0c, 0x0a, 0x0a, 0x5f, 0x6b, 0x65, 0x79, 0x5f, 0x62, 0x6f, 0x6e, 0x75,
+	0x73, 0x42, 0x07, 0x0a, 0x05, 0x5f, 0x70, 0x6c, 0x61, 0x6e, 0x42, 0x0e, 0x0a, 0x0c, 0x5f, 0x73,
+	0x68, 0x6f, 0x70, 0x5f, 0x62, 0x61, 0x6e, 0x6e, 0x65, 0x72, 0x42, 0x0c, 0x0a, 0x0a, 0x5f, 0x73,
+	0x75, 0x62, 0x64, 0x6f, 0x6d, 0x61, 0x69, 0x6e, 0x22, 0xd3, 0x03, 0x0a, 0x17, 0x49, 0x6e, 0x76,
+	0x65, 0x6e, 0x74, 0x6f, 0x72, 0x79, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x44, 0x65,
+	0x74, 0x61, 0x69, 0x6c, 0x12, 0x32, 0x0a, 0x09, 0x69, 0x6e, 0x76, 0x65, 0x6e, 0x74, 0x6f, 0x72,
+	0x79, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x14, 0x2e, 0x69, 0x6e, 0x76, 0x65, 0x6e, 0x74,
+	0x6f, 0x72, 0x79, 0x2e, 0x49, 0x6e, 0x76, 0x65, 0x6e, 0x74, 0x6f, 0x72, 0x79, 0x52, 0x09, 0x69,
+	0x6e, 0x76, 0x65, 0x6e, 0x74, 0x6f, 0x72, 0x79, 0x12, 0x23, 0x0a, 0x04, 0x75, 0x73, 0x65, 0x72,
+	0x18, 0x02, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x0f, 0x2e, 0x69, 0x6e, 0x76, 0x65, 0x6e, 0x74, 0x6f,
+	0x72, 0x79, 0x2e, 0x55, 0x73, 0x65, 0x72, 0x52, 0x04, 0x75, 0x73, 0x65, 0x72, 0x12, 0x31, 0x0a,
+	0x06, 0x69, 0x6d, 0x61, 0x67, 0x65, 0x73, 0x18, 0x03, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x19, 0x2e,
+	0x69, 0x6e, 0x76, 0x65, 0x6e, 0x74, 0x6f, 0x72, 0x79, 0x2e, 0x49, 0x6e, 0x76, 0x65, 0x6e, 0x74,
+	0x6f, 0x72, 0x79, 0x49, 0x6d, 0x61, 0x67, 0x65, 0x52, 0x06, 0x69, 0x6d, 0x61, 0x67, 0x65, 0x73,
+	0x12, 0x2c, 0x0a, 0x07, 0x63, 0x6f, 0x75, 0x6e, 0x74, 0x72, 0x79, 0x18, 0x04, 0x20, 0x01, 0x28,
+	0x0b, 0x32, 0x12, 0x2e, 0x69, 0x6e, 0x76, 0x65, 0x6e, 0x74, 0x6f, 0x72, 0x79, 0x2e, 0x43, 0x6f,
+	0x75, 0x6e, 0x74, 0x72, 0x79, 0x52, 0x07, 0x63, 0x6f, 0x75, 0x6e, 0x74, 0x72, 0x79, 0x12, 0x20,
+	0x0a, 0x03, 0x6c, 0x67, 0x61, 0x18, 0x05, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x0e, 0x2e, 0x69, 0x6e,
+	0x76, 0x65, 0x6e, 0x74, 0x6f, 0x72, 0x79, 0x2e, 0x4c, 0x47, 0x41, 0x52, 0x03, 0x6c, 0x67, 0x61,
+	0x12, 0x26, 0x0a, 0x05, 0x73, 0x74, 0x61, 0x74, 0x65, 0x18, 0x06, 0x20, 0x01, 0x28, 0x0b, 0x32,
+	0x10, 0x2e, 0x69, 0x6e, 0x76, 0x65, 0x6e, 0x74, 0x6f, 0x72, 0x79, 0x2e, 0x53, 0x74, 0x61, 0x74,
+	0x65, 0x52, 0x05, 0x73, 0x74, 0x61, 0x74, 0x65, 0x12, 0x37, 0x0a, 0x08, 0x63, 0x61, 0x74, 0x65,
+	0x67, 0x6f, 0x72, 0x79, 0x18, 0x07, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x1b, 0x2e, 0x69, 0x6e, 0x76,
+	0x65, 0x6e, 0x74, 0x6f, 0x72, 0x79, 0x2e, 0x43, 0x61, 0x74, 0x65, 0x67, 0x6f, 0x72, 0x79, 0x52,
+	0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x52, 0x08, 0x63, 0x61, 0x74, 0x65, 0x67, 0x6f, 0x72,
+	0x79, 0x12, 0x40, 0x0a, 0x0b, 0x73, 0x75, 0x62, 0x63, 0x61, 0x74, 0x65, 0x67, 0x6f, 0x72, 0x79,
+	0x18, 0x08, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x1e, 0x2e, 0x69, 0x6e, 0x76, 0x65, 0x6e, 0x74, 0x6f,
+	0x72, 0x79, 0x2e, 0x53, 0x75, 0x62, 0x43, 0x61, 0x74, 0x65, 0x67, 0x6f, 0x72, 0x79, 0x52, 0x65,
+	0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x52, 0x0b, 0x73, 0x75, 0x62, 0x63, 0x61, 0x74, 0x65, 0x67,
+	0x6f, 0x72, 0x79, 0x12, 0x39, 0x0a, 0x0c, 0x62, 0x75, 0x73, 0x69, 0x6e, 0x65, 0x73, 0x73, 0x5f,
+	0x6b, 0x79, 0x63, 0x18, 0x09, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x16, 0x2e, 0x69, 0x6e, 0x76, 0x65,
+	0x6e, 0x74, 0x6f, 0x72, 0x79, 0x2e, 0x42, 0x75, 0x73, 0x69, 0x6e, 0x65, 0x73, 0x73, 0x4b, 0x79,
+	0x63, 0x52, 0x0b, 0x62, 0x75, 0x73, 0x69, 0x6e, 0x65, 0x73, 0x73, 0x4b, 0x79, 0x63, 0x22, 0xe6,
 	0x07, 0x0a, 0x11, 0x49, 0x6e, 0x76, 0x65, 0x6e, 0x74, 0x6f, 0x72, 0x79, 0x52, 0x65, 0x73, 0x70,
 	0x6f, 0x6e, 0x73, 0x65, 0x12, 0x0e, 0x0a, 0x02, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09,
 	0x52, 0x02, 0x69, 0x64, 0x12, 0x12, 0x0a, 0x04, 0x6e, 0x61, 0x6d, 0x65, 0x18, 0x02, 0x20, 0x01,
@@ -4358,7 +4756,7 @@ func file_inventory_inventory_proto_rawDescGZIP() []byte {
 	return file_inventory_inventory_proto_rawDescData
 }
 
-var file_inventory_inventory_proto_msgTypes = make([]protoimpl.MessageInfo, 34)
+var file_inventory_inventory_proto_msgTypes = make([]protoimpl.MessageInfo, 36)
 var file_inventory_inventory_proto_goTypes = []any{
 	(*EmptyRequest)(nil),                   // 0: inventory.EmptyRequest
 	(*ResourceId)(nil),                     // 1: inventory.ResourceId
@@ -4378,123 +4776,136 @@ var file_inventory_inventory_proto_goTypes = []any{
 	(*InventoryRatingResponse)(nil),        // 15: inventory.InventoryRatingResponse
 	(*UserRatingRequest)(nil),              // 16: inventory.UserRatingRequest
 	(*UserRatingResponse)(nil),             // 17: inventory.UserRatingResponse
-	(*InventoryResponseDetail)(nil),        // 18: inventory.InventoryResponseDetail
-	(*InventoryResponse)(nil),              // 19: inventory.InventoryResponse
-	(*UserRatingsResponse)(nil),            // 20: inventory.UserRatingsResponse
-	(*InventoryRatingsResponse)(nil),       // 21: inventory.InventoryRatingsResponse
-	(*RatingSummary)(nil),                  // 22: inventory.RatingSummary
-	(*ReplyToRatingRequest)(nil),           // 23: inventory.ReplyToRatingRequest
-	(*ReplyToRatingResponse)(nil),          // 24: inventory.ReplyToRatingResponse
-	(*InventoryRatingReplyResponse)(nil),   // 25: inventory.InventoryRatingReplyResponse
-	(*SearchInventoryRequest)(nil),         // 26: inventory.SearchInventoryRequest
-	(*Country)(nil),                        // 27: inventory.Country
-	(*State)(nil),                          // 28: inventory.State
-	(*LGA)(nil),                            // 29: inventory.LGA
-	(*Inventory)(nil),                      // 30: inventory.Inventory
-	(*InventoryImage)(nil),                 // 31: inventory.InventoryImage
-	(*InventoryCollection)(nil),            // 32: inventory.InventoryCollection
-	(*GetCategoryByIDPayload)(nil),         // 33: inventory.GetCategoryByIDPayload
-	(*timestamppb.Timestamp)(nil),          // 34: google.protobuf.Timestamp
-	(*wrapperspb.Int32Value)(nil),          // 35: google.protobuf.Int32Value
-	(*wrapperspb.StringValue)(nil),         // 36: google.protobuf.StringValue
+	(*Plan)(nil),                           // 18: inventory.Plan
+	(*BusinessKyc)(nil),                    // 19: inventory.BusinessKyc
+	(*InventoryResponseDetail)(nil),        // 20: inventory.InventoryResponseDetail
+	(*InventoryResponse)(nil),              // 21: inventory.InventoryResponse
+	(*UserRatingsResponse)(nil),            // 22: inventory.UserRatingsResponse
+	(*InventoryRatingsResponse)(nil),       // 23: inventory.InventoryRatingsResponse
+	(*RatingSummary)(nil),                  // 24: inventory.RatingSummary
+	(*ReplyToRatingRequest)(nil),           // 25: inventory.ReplyToRatingRequest
+	(*ReplyToRatingResponse)(nil),          // 26: inventory.ReplyToRatingResponse
+	(*InventoryRatingReplyResponse)(nil),   // 27: inventory.InventoryRatingReplyResponse
+	(*SearchInventoryRequest)(nil),         // 28: inventory.SearchInventoryRequest
+	(*Country)(nil),                        // 29: inventory.Country
+	(*State)(nil),                          // 30: inventory.State
+	(*LGA)(nil),                            // 31: inventory.LGA
+	(*Inventory)(nil),                      // 32: inventory.Inventory
+	(*InventoryImage)(nil),                 // 33: inventory.InventoryImage
+	(*InventoryCollection)(nil),            // 34: inventory.InventoryCollection
+	(*GetCategoryByIDPayload)(nil),         // 35: inventory.GetCategoryByIDPayload
+	(*timestamppb.Timestamp)(nil),          // 36: google.protobuf.Timestamp
+	(*wrapperspb.Int32Value)(nil),          // 37: google.protobuf.Int32Value
+	(*wrapperspb.StringValue)(nil),         // 38: google.protobuf.StringValue
 }
 var file_inventory_inventory_proto_depIdxs = []int32{
 	1,  // 0: inventory.GetResourceWithIDAndPagination.id:type_name -> inventory.ResourceId
 	3,  // 1: inventory.GetResourceWithIDAndPagination.pagination:type_name -> inventory.PaginationParam
-	34, // 2: inventory.User.created_at:type_name -> google.protobuf.Timestamp
-	34, // 3: inventory.User.updated_at:type_name -> google.protobuf.Timestamp
+	36, // 2: inventory.User.created_at:type_name -> google.protobuf.Timestamp
+	36, // 3: inventory.User.updated_at:type_name -> google.protobuf.Timestamp
 	5,  // 4: inventory.UserListResponse.users:type_name -> inventory.User
 	7,  // 5: inventory.CreateInventoryRequest.images:type_name -> inventory.ImageData
 	7,  // 6: inventory.CreateInventoryRequest.primary_image:type_name -> inventory.ImageData
-	34, // 7: inventory.CategoryResponse.created_at:type_name -> google.protobuf.Timestamp
-	34, // 8: inventory.CategoryResponse.updated_at:type_name -> google.protobuf.Timestamp
+	36, // 7: inventory.CategoryResponse.created_at:type_name -> google.protobuf.Timestamp
+	36, // 8: inventory.CategoryResponse.updated_at:type_name -> google.protobuf.Timestamp
 	11, // 9: inventory.CategoryResponse.subcategories:type_name -> inventory.SubCategoryResponse
-	34, // 10: inventory.SubCategoryResponse.created_at:type_name -> google.protobuf.Timestamp
-	34, // 11: inventory.SubCategoryResponse.updated_at:type_name -> google.protobuf.Timestamp
+	36, // 10: inventory.SubCategoryResponse.created_at:type_name -> google.protobuf.Timestamp
+	36, // 11: inventory.SubCategoryResponse.updated_at:type_name -> google.protobuf.Timestamp
 	10, // 12: inventory.AllCategoryResponse.categories:type_name -> inventory.CategoryResponse
 	11, // 13: inventory.AllSubCategoryResponse.subcategories:type_name -> inventory.SubCategoryResponse
-	34, // 14: inventory.InventoryRatingResponse.updated_at:type_name -> google.protobuf.Timestamp
-	34, // 15: inventory.InventoryRatingResponse.created_at:type_name -> google.protobuf.Timestamp
+	36, // 14: inventory.InventoryRatingResponse.updated_at:type_name -> google.protobuf.Timestamp
+	36, // 15: inventory.InventoryRatingResponse.created_at:type_name -> google.protobuf.Timestamp
 	5,  // 16: inventory.InventoryRatingResponse.rater:type_name -> inventory.User
-	25, // 17: inventory.InventoryRatingResponse.replies:type_name -> inventory.InventoryRatingReplyResponse
-	35, // 18: inventory.InventoryRatingResponse.replies_count:type_name -> google.protobuf.Int32Value
-	34, // 19: inventory.UserRatingResponse.updated_at:type_name -> google.protobuf.Timestamp
-	34, // 20: inventory.UserRatingResponse.created_at:type_name -> google.protobuf.Timestamp
+	27, // 17: inventory.InventoryRatingResponse.replies:type_name -> inventory.InventoryRatingReplyResponse
+	37, // 18: inventory.InventoryRatingResponse.replies_count:type_name -> google.protobuf.Int32Value
+	36, // 19: inventory.UserRatingResponse.updated_at:type_name -> google.protobuf.Timestamp
+	36, // 20: inventory.UserRatingResponse.created_at:type_name -> google.protobuf.Timestamp
 	5,  // 21: inventory.UserRatingResponse.rater:type_name -> inventory.User
-	35, // 22: inventory.UserRatingResponse.replies_count:type_name -> google.protobuf.Int32Value
-	30, // 23: inventory.InventoryResponseDetail.inventory:type_name -> inventory.Inventory
-	5,  // 24: inventory.InventoryResponseDetail.user:type_name -> inventory.User
-	31, // 25: inventory.InventoryResponseDetail.images:type_name -> inventory.InventoryImage
-	27, // 26: inventory.InventoryResponseDetail.country:type_name -> inventory.Country
-	29, // 27: inventory.InventoryResponseDetail.lga:type_name -> inventory.LGA
-	28, // 28: inventory.InventoryResponseDetail.state:type_name -> inventory.State
-	10, // 29: inventory.InventoryResponseDetail.category:type_name -> inventory.CategoryResponse
-	11, // 30: inventory.InventoryResponseDetail.subcategory:type_name -> inventory.SubCategoryResponse
-	34, // 31: inventory.InventoryResponse.updated_at:type_name -> google.protobuf.Timestamp
-	34, // 32: inventory.InventoryResponse.created_at:type_name -> google.protobuf.Timestamp
-	17, // 33: inventory.UserRatingsResponse.user_ratings:type_name -> inventory.UserRatingResponse
-	3,  // 34: inventory.UserRatingsResponse.page_detail:type_name -> inventory.PaginationParam
-	22, // 35: inventory.UserRatingsResponse.rating_sumary:type_name -> inventory.RatingSummary
-	15, // 36: inventory.InventoryRatingsResponse.inventory_ratings:type_name -> inventory.InventoryRatingResponse
-	3,  // 37: inventory.InventoryRatingsResponse.page_detail:type_name -> inventory.PaginationParam
-	22, // 38: inventory.InventoryRatingsResponse.rating_sumary:type_name -> inventory.RatingSummary
-	34, // 39: inventory.ReplyToRatingResponse.updated_at:type_name -> google.protobuf.Timestamp
-	34, // 40: inventory.ReplyToRatingResponse.created_at:type_name -> google.protobuf.Timestamp
-	34, // 41: inventory.InventoryRatingReplyResponse.created_at:type_name -> google.protobuf.Timestamp
-	34, // 42: inventory.InventoryRatingReplyResponse.updated_at:type_name -> google.protobuf.Timestamp
-	5,  // 43: inventory.InventoryRatingReplyResponse.replier:type_name -> inventory.User
-	34, // 44: inventory.Country.created_at:type_name -> google.protobuf.Timestamp
-	34, // 45: inventory.Country.updated_at:type_name -> google.protobuf.Timestamp
-	34, // 46: inventory.State.created_at:type_name -> google.protobuf.Timestamp
-	34, // 47: inventory.State.updated_at:type_name -> google.protobuf.Timestamp
-	34, // 48: inventory.LGA.created_at:type_name -> google.protobuf.Timestamp
-	34, // 49: inventory.LGA.updated_at:type_name -> google.protobuf.Timestamp
-	34, // 50: inventory.Inventory.created_at:type_name -> google.protobuf.Timestamp
-	34, // 51: inventory.Inventory.updated_at:type_name -> google.protobuf.Timestamp
-	27, // 52: inventory.Inventory.country:type_name -> inventory.Country
-	28, // 53: inventory.Inventory.state:type_name -> inventory.State
-	29, // 54: inventory.Inventory.lga:type_name -> inventory.LGA
-	31, // 55: inventory.Inventory.images:type_name -> inventory.InventoryImage
-	5,  // 56: inventory.Inventory.user:type_name -> inventory.User
-	36, // 57: inventory.Inventory.tags:type_name -> google.protobuf.StringValue
-	10, // 58: inventory.Inventory.category:type_name -> inventory.CategoryResponse
-	11, // 59: inventory.Inventory.sub_category:type_name -> inventory.SubCategoryResponse
-	34, // 60: inventory.InventoryImage.created_at:type_name -> google.protobuf.Timestamp
-	34, // 61: inventory.InventoryImage.updated_at:type_name -> google.protobuf.Timestamp
-	30, // 62: inventory.InventoryCollection.inventories:type_name -> inventory.Inventory
-	0,  // 63: inventory.InventoryService.GetUsers:input_type -> inventory.EmptyRequest
-	8,  // 64: inventory.InventoryService.CreateInventory:input_type -> inventory.CreateInventoryRequest
-	0,  // 65: inventory.InventoryService.GetCategories:input_type -> inventory.EmptyRequest
-	0,  // 66: inventory.InventoryService.GetSubCategories:input_type -> inventory.EmptyRequest
-	33, // 67: inventory.InventoryService.GetCategory:input_type -> inventory.GetCategoryByIDPayload
-	1,  // 68: inventory.InventoryService.GetCategorySubcategories:input_type -> inventory.ResourceId
-	14, // 69: inventory.InventoryService.RateInventory:input_type -> inventory.InventoryRatingRequest
-	16, // 70: inventory.InventoryService.RateUser:input_type -> inventory.UserRatingRequest
-	2,  // 71: inventory.InventoryService.GetInventoryByID:input_type -> inventory.SingleInventoryRequestDetail
-	4,  // 72: inventory.InventoryService.GetUserRatings:input_type -> inventory.GetResourceWithIDAndPagination
-	4,  // 73: inventory.InventoryService.GetInventoryRatings:input_type -> inventory.GetResourceWithIDAndPagination
-	23, // 74: inventory.InventoryService.ReplyInventoryRating:input_type -> inventory.ReplyToRatingRequest
-	23, // 75: inventory.InventoryService.ReplyUserRating:input_type -> inventory.ReplyToRatingRequest
-	26, // 76: inventory.InventoryService.SearchInventory:input_type -> inventory.SearchInventoryRequest
-	6,  // 77: inventory.InventoryService.GetUsers:output_type -> inventory.UserListResponse
-	9,  // 78: inventory.InventoryService.CreateInventory:output_type -> inventory.CreateInventoryResponse
-	12, // 79: inventory.InventoryService.GetCategories:output_type -> inventory.AllCategoryResponse
-	13, // 80: inventory.InventoryService.GetSubCategories:output_type -> inventory.AllSubCategoryResponse
-	10, // 81: inventory.InventoryService.GetCategory:output_type -> inventory.CategoryResponse
-	13, // 82: inventory.InventoryService.GetCategorySubcategories:output_type -> inventory.AllSubCategoryResponse
-	15, // 83: inventory.InventoryService.RateInventory:output_type -> inventory.InventoryRatingResponse
-	17, // 84: inventory.InventoryService.RateUser:output_type -> inventory.UserRatingResponse
-	18, // 85: inventory.InventoryService.GetInventoryByID:output_type -> inventory.InventoryResponseDetail
-	20, // 86: inventory.InventoryService.GetUserRatings:output_type -> inventory.UserRatingsResponse
-	21, // 87: inventory.InventoryService.GetInventoryRatings:output_type -> inventory.InventoryRatingsResponse
-	24, // 88: inventory.InventoryService.ReplyInventoryRating:output_type -> inventory.ReplyToRatingResponse
-	24, // 89: inventory.InventoryService.ReplyUserRating:output_type -> inventory.ReplyToRatingResponse
-	32, // 90: inventory.InventoryService.SearchInventory:output_type -> inventory.InventoryCollection
-	77, // [77:91] is the sub-list for method output_type
-	63, // [63:77] is the sub-list for method input_type
-	63, // [63:63] is the sub-list for extension type_name
-	63, // [63:63] is the sub-list for extension extendee
-	0,  // [0:63] is the sub-list for field type_name
+	37, // 22: inventory.UserRatingResponse.replies_count:type_name -> google.protobuf.Int32Value
+	36, // 23: inventory.Plan.created_at:type_name -> google.protobuf.Timestamp
+	36, // 24: inventory.Plan.updated_at:type_name -> google.protobuf.Timestamp
+	38, // 25: inventory.BusinessKyc.cac_number:type_name -> google.protobuf.StringValue
+	5,  // 26: inventory.BusinessKyc.user:type_name -> inventory.User
+	29, // 27: inventory.BusinessKyc.country:type_name -> inventory.Country
+	30, // 28: inventory.BusinessKyc.state:type_name -> inventory.State
+	31, // 29: inventory.BusinessKyc.lga:type_name -> inventory.LGA
+	18, // 30: inventory.BusinessKyc.plan:type_name -> inventory.Plan
+	36, // 31: inventory.BusinessKyc.updated_at:type_name -> google.protobuf.Timestamp
+	36, // 32: inventory.BusinessKyc.created_at:type_name -> google.protobuf.Timestamp
+	32, // 33: inventory.InventoryResponseDetail.inventory:type_name -> inventory.Inventory
+	5,  // 34: inventory.InventoryResponseDetail.user:type_name -> inventory.User
+	33, // 35: inventory.InventoryResponseDetail.images:type_name -> inventory.InventoryImage
+	29, // 36: inventory.InventoryResponseDetail.country:type_name -> inventory.Country
+	31, // 37: inventory.InventoryResponseDetail.lga:type_name -> inventory.LGA
+	30, // 38: inventory.InventoryResponseDetail.state:type_name -> inventory.State
+	10, // 39: inventory.InventoryResponseDetail.category:type_name -> inventory.CategoryResponse
+	11, // 40: inventory.InventoryResponseDetail.subcategory:type_name -> inventory.SubCategoryResponse
+	19, // 41: inventory.InventoryResponseDetail.business_kyc:type_name -> inventory.BusinessKyc
+	36, // 42: inventory.InventoryResponse.updated_at:type_name -> google.protobuf.Timestamp
+	36, // 43: inventory.InventoryResponse.created_at:type_name -> google.protobuf.Timestamp
+	17, // 44: inventory.UserRatingsResponse.user_ratings:type_name -> inventory.UserRatingResponse
+	3,  // 45: inventory.UserRatingsResponse.page_detail:type_name -> inventory.PaginationParam
+	24, // 46: inventory.UserRatingsResponse.rating_sumary:type_name -> inventory.RatingSummary
+	15, // 47: inventory.InventoryRatingsResponse.inventory_ratings:type_name -> inventory.InventoryRatingResponse
+	3,  // 48: inventory.InventoryRatingsResponse.page_detail:type_name -> inventory.PaginationParam
+	24, // 49: inventory.InventoryRatingsResponse.rating_sumary:type_name -> inventory.RatingSummary
+	36, // 50: inventory.ReplyToRatingResponse.updated_at:type_name -> google.protobuf.Timestamp
+	36, // 51: inventory.ReplyToRatingResponse.created_at:type_name -> google.protobuf.Timestamp
+	36, // 52: inventory.InventoryRatingReplyResponse.created_at:type_name -> google.protobuf.Timestamp
+	36, // 53: inventory.InventoryRatingReplyResponse.updated_at:type_name -> google.protobuf.Timestamp
+	5,  // 54: inventory.InventoryRatingReplyResponse.replier:type_name -> inventory.User
+	36, // 55: inventory.Country.created_at:type_name -> google.protobuf.Timestamp
+	36, // 56: inventory.Country.updated_at:type_name -> google.protobuf.Timestamp
+	36, // 57: inventory.State.created_at:type_name -> google.protobuf.Timestamp
+	36, // 58: inventory.State.updated_at:type_name -> google.protobuf.Timestamp
+	36, // 59: inventory.LGA.created_at:type_name -> google.protobuf.Timestamp
+	36, // 60: inventory.LGA.updated_at:type_name -> google.protobuf.Timestamp
+	36, // 61: inventory.Inventory.created_at:type_name -> google.protobuf.Timestamp
+	36, // 62: inventory.Inventory.updated_at:type_name -> google.protobuf.Timestamp
+	29, // 63: inventory.Inventory.country:type_name -> inventory.Country
+	30, // 64: inventory.Inventory.state:type_name -> inventory.State
+	31, // 65: inventory.Inventory.lga:type_name -> inventory.LGA
+	33, // 66: inventory.Inventory.images:type_name -> inventory.InventoryImage
+	5,  // 67: inventory.Inventory.user:type_name -> inventory.User
+	38, // 68: inventory.Inventory.tags:type_name -> google.protobuf.StringValue
+	10, // 69: inventory.Inventory.category:type_name -> inventory.CategoryResponse
+	11, // 70: inventory.Inventory.sub_category:type_name -> inventory.SubCategoryResponse
+	36, // 71: inventory.InventoryImage.created_at:type_name -> google.protobuf.Timestamp
+	36, // 72: inventory.InventoryImage.updated_at:type_name -> google.protobuf.Timestamp
+	32, // 73: inventory.InventoryCollection.inventories:type_name -> inventory.Inventory
+	0,  // 74: inventory.InventoryService.GetUsers:input_type -> inventory.EmptyRequest
+	8,  // 75: inventory.InventoryService.CreateInventory:input_type -> inventory.CreateInventoryRequest
+	0,  // 76: inventory.InventoryService.GetCategories:input_type -> inventory.EmptyRequest
+	0,  // 77: inventory.InventoryService.GetSubCategories:input_type -> inventory.EmptyRequest
+	35, // 78: inventory.InventoryService.GetCategory:input_type -> inventory.GetCategoryByIDPayload
+	1,  // 79: inventory.InventoryService.GetCategorySubcategories:input_type -> inventory.ResourceId
+	14, // 80: inventory.InventoryService.RateInventory:input_type -> inventory.InventoryRatingRequest
+	16, // 81: inventory.InventoryService.RateUser:input_type -> inventory.UserRatingRequest
+	2,  // 82: inventory.InventoryService.GetInventoryByID:input_type -> inventory.SingleInventoryRequestDetail
+	4,  // 83: inventory.InventoryService.GetUserRatings:input_type -> inventory.GetResourceWithIDAndPagination
+	4,  // 84: inventory.InventoryService.GetInventoryRatings:input_type -> inventory.GetResourceWithIDAndPagination
+	25, // 85: inventory.InventoryService.ReplyInventoryRating:input_type -> inventory.ReplyToRatingRequest
+	25, // 86: inventory.InventoryService.ReplyUserRating:input_type -> inventory.ReplyToRatingRequest
+	28, // 87: inventory.InventoryService.SearchInventory:input_type -> inventory.SearchInventoryRequest
+	6,  // 88: inventory.InventoryService.GetUsers:output_type -> inventory.UserListResponse
+	9,  // 89: inventory.InventoryService.CreateInventory:output_type -> inventory.CreateInventoryResponse
+	12, // 90: inventory.InventoryService.GetCategories:output_type -> inventory.AllCategoryResponse
+	13, // 91: inventory.InventoryService.GetSubCategories:output_type -> inventory.AllSubCategoryResponse
+	10, // 92: inventory.InventoryService.GetCategory:output_type -> inventory.CategoryResponse
+	13, // 93: inventory.InventoryService.GetCategorySubcategories:output_type -> inventory.AllSubCategoryResponse
+	15, // 94: inventory.InventoryService.RateInventory:output_type -> inventory.InventoryRatingResponse
+	17, // 95: inventory.InventoryService.RateUser:output_type -> inventory.UserRatingResponse
+	20, // 96: inventory.InventoryService.GetInventoryByID:output_type -> inventory.InventoryResponseDetail
+	22, // 97: inventory.InventoryService.GetUserRatings:output_type -> inventory.UserRatingsResponse
+	23, // 98: inventory.InventoryService.GetInventoryRatings:output_type -> inventory.InventoryRatingsResponse
+	26, // 99: inventory.InventoryService.ReplyInventoryRating:output_type -> inventory.ReplyToRatingResponse
+	26, // 100: inventory.InventoryService.ReplyUserRating:output_type -> inventory.ReplyToRatingResponse
+	34, // 101: inventory.InventoryService.SearchInventory:output_type -> inventory.InventoryCollection
+	88, // [88:102] is the sub-list for method output_type
+	74, // [74:88] is the sub-list for method input_type
+	74, // [74:74] is the sub-list for extension type_name
+	74, // [74:74] is the sub-list for extension extendee
+	0,  // [0:74] is the sub-list for field type_name
 }
 
 func init() { file_inventory_inventory_proto_init() }
@@ -4505,14 +4916,15 @@ func file_inventory_inventory_proto_init() {
 	file_inventory_inventory_proto_msgTypes[5].OneofWrappers = []any{}
 	file_inventory_inventory_proto_msgTypes[10].OneofWrappers = []any{}
 	file_inventory_inventory_proto_msgTypes[11].OneofWrappers = []any{}
-	file_inventory_inventory_proto_msgTypes[30].OneofWrappers = []any{}
+	file_inventory_inventory_proto_msgTypes[19].OneofWrappers = []any{}
+	file_inventory_inventory_proto_msgTypes[32].OneofWrappers = []any{}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_inventory_inventory_proto_rawDesc,
 			NumEnums:      0,
-			NumMessages:   34,
+			NumMessages:   36,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
