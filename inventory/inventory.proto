@@ -244,7 +244,7 @@ message BusinessKyc {
   optional Plan plan = 17;
 
   bool verified = 18;
-  bool active_plan = 19;
+  optional bool active_plan = 19;
 
   optional string shop_banner = 20;
   string industries = 21;
