@@ -183,8 +183,8 @@ message InventoryRatingResponse {
     User rater = 10;  
     repeated InventoryRatingReplyResponse replies = 11; 
     google.protobuf.Int32Value  replies_count  = 12;
-    google.protobuf.Int32Value  report_count  = 13;
-    google.protobuf.Int32Value  helpful_count  = 14;
+    google.protobuf.Int64Value  report_count  = 13;
+    google.protobuf.Int64Value  helpful_count  = 14;
 }
 
 //--------------------------------------------USER RATING MESSAGE--------------------------------------------------//
@@ -210,8 +210,8 @@ message UserRatingResponse {
     // optional int32 replies_count  = 11;
     google.protobuf.Int32Value  replies_count  = 11;
 
-    google.protobuf.Int32Value   report_count  = 12;
-    google.protobuf.Int32Value   helpful_count  = 13;
+    google.protobuf.Int64Value   report_count  = 12;
+    google.protobuf.Int64Value   helpful_count  = 13;
 
 }
 

@@ -1247,8 +1247,8 @@ type InventoryRatingResponse struct {
 	Rater          *User                           `protobuf:"bytes,10,opt,name=rater,proto3" json:"rater,omitempty"`
 	Replies        []*InventoryRatingReplyResponse `protobuf:"bytes,11,rep,name=replies,proto3" json:"replies,omitempty"`
 	RepliesCount   *wrapperspb.Int32Value          `protobuf:"bytes,12,opt,name=replies_count,json=repliesCount,proto3" json:"replies_count,omitempty"`
-	ReportCount    *wrapperspb.Int32Value          `protobuf:"bytes,13,opt,name=report_count,json=reportCount,proto3" json:"report_count,omitempty"`
-	HelpfulCount   *wrapperspb.Int32Value          `protobuf:"bytes,14,opt,name=helpful_count,json=helpfulCount,proto3" json:"helpful_count,omitempty"`
+	ReportCount    *wrapperspb.Int64Value          `protobuf:"bytes,13,opt,name=report_count,json=reportCount,proto3" json:"report_count,omitempty"`
+	HelpfulCount   *wrapperspb.Int64Value          `protobuf:"bytes,14,opt,name=helpful_count,json=helpfulCount,proto3" json:"helpful_count,omitempty"`
 }
 
 func (x *InventoryRatingResponse) Reset() {
@@ -1365,14 +1365,14 @@ func (x *InventoryRatingResponse) GetRepliesCount() *wrapperspb.Int32Value {
 	return nil
 }
 
-func (x *InventoryRatingResponse) GetReportCount() *wrapperspb.Int32Value {
+func (x *InventoryRatingResponse) GetReportCount() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.ReportCount
 	}
 	return nil
 }
 
-func (x *InventoryRatingResponse) GetHelpfulCount() *wrapperspb.Int32Value {
+func (x *InventoryRatingResponse) GetHelpfulCount() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.HelpfulCount
 	}
@@ -1465,8 +1465,8 @@ type UserRatingResponse struct {
 	Rater          *User                  `protobuf:"bytes,10,opt,name=rater,proto3" json:"rater,omitempty"`
 	// optional int32 replies_count  = 11;
 	RepliesCount *wrapperspb.Int32Value `protobuf:"bytes,11,opt,name=replies_count,json=repliesCount,proto3" json:"replies_count,omitempty"`
-	ReportCount  *wrapperspb.Int32Value `protobuf:"bytes,12,opt,name=report_count,json=reportCount,proto3" json:"report_count,omitempty"`
-	HelpfulCount *wrapperspb.Int32Value `protobuf:"bytes,13,opt,name=helpful_count,json=helpfulCount,proto3" json:"helpful_count,omitempty"`
+	ReportCount  *wrapperspb.Int64Value `protobuf:"bytes,12,opt,name=report_count,json=reportCount,proto3" json:"report_count,omitempty"`
+	HelpfulCount *wrapperspb.Int64Value `protobuf:"bytes,13,opt,name=helpful_count,json=helpfulCount,proto3" json:"helpful_count,omitempty"`
 }
 
 func (x *UserRatingResponse) Reset() {
@@ -1576,14 +1576,14 @@ func (x *UserRatingResponse) GetRepliesCount() *wrapperspb.Int32Value {
 	return nil
 }
 
-func (x *UserRatingResponse) GetReportCount() *wrapperspb.Int32Value {
+func (x *UserRatingResponse) GetReportCount() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.ReportCount
 	}
 	return nil
 }
 
-func (x *UserRatingResponse) GetHelpfulCount() *wrapperspb.Int32Value {
+func (x *UserRatingResponse) GetHelpfulCount() *wrapperspb.Int64Value {
 	if x != nil {
 		return x.HelpfulCount
 	}
@@ -4148,11 +4148,11 @@ var file_inventory_inventory_proto_rawDesc = []byte{
 	0x69, 0x65, 0x73, 0x43, 0x6f, 0x75, 0x6e, 0x74, 0x12, 0x3e, 0x0a, 0x0c, 0x72, 0x65, 0x70, 0x6f,
 	0x72, 0x74, 0x5f, 0x63, 0x6f, 0x75, 0x6e, 0x74, 0x18, 0x0d, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x1b,
 	0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x75, 0x66,
-	0x2e, 0x49, 0x6e, 0x74, 0x33, 0x32, 0x56, 0x61, 0x6c, 0x75, 0x65, 0x52, 0x0b, 0x72, 0x65, 0x70,
+	0x2e, 0x49, 0x6e, 0x74, 0x36, 0x34, 0x56, 0x61, 0x6c, 0x75, 0x65, 0x52, 0x0b, 0x72, 0x65, 0x70,
 	0x6f, 0x72, 0x74, 0x43, 0x6f, 0x75, 0x6e, 0x74, 0x12, 0x40, 0x0a, 0x0d, 0x68, 0x65, 0x6c, 0x70,
 	0x66, 0x75, 0x6c, 0x5f, 0x63, 0x6f, 0x75, 0x6e, 0x74, 0x18, 0x0e, 0x20, 0x01, 0x28, 0x0b, 0x32,
 	0x1b, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x75,
-	0x66, 0x2e, 0x49, 0x6e, 0x74, 0x33, 0x32, 0x56, 0x61, 0x6c, 0x75, 0x65, 0x52, 0x0c, 0x68, 0x65,
+	0x66, 0x2e, 0x49, 0x6e, 0x74, 0x36, 0x34, 0x56, 0x61, 0x6c, 0x75, 0x65, 0x52, 0x0c, 0x68, 0x65,
 	0x6c, 0x70, 0x66, 0x75, 0x6c, 0x43, 0x6f, 0x75, 0x6e, 0x74, 0x22, 0x79, 0x0a, 0x11, 0x55, 0x73,
 	0x65, 0x72, 0x52, 0x61, 0x74, 0x69, 0x6e, 0x67, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12,
 	0x17, 0x0a, 0x07, 0x75, 0x73, 0x65, 0x72, 0x5f, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09,
@@ -4192,11 +4192,11 @@ var file_inventory_inventory_proto_rawDesc = []byte{
 	0x43, 0x6f, 0x75, 0x6e, 0x74, 0x12, 0x3e, 0x0a, 0x0c, 0x72, 0x65, 0x70, 0x6f, 0x72, 0x74, 0x5f,
 	0x63, 0x6f, 0x75, 0x6e, 0x74, 0x18, 0x0c, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x1b, 0x2e, 0x67, 0x6f,
 	0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x75, 0x66, 0x2e, 0x49, 0x6e,
-	0x74, 0x33, 0x32, 0x56, 0x61, 0x6c, 0x75, 0x65, 0x52, 0x0b, 0x72, 0x65, 0x70, 0x6f, 0x72, 0x74,
+	0x74, 0x36, 0x34, 0x56, 0x61, 0x6c, 0x75, 0x65, 0x52, 0x0b, 0x72, 0x65, 0x70, 0x6f, 0x72, 0x74,
 	0x43, 0x6f, 0x75, 0x6e, 0x74, 0x12, 0x40, 0x0a, 0x0d, 0x68, 0x65, 0x6c, 0x70, 0x66, 0x75, 0x6c,
 	0x5f, 0x63, 0x6f, 0x75, 0x6e, 0x74, 0x18, 0x0d, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x1b, 0x2e, 0x67,
 	0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x75, 0x66, 0x2e, 0x49,
-	0x6e, 0x74, 0x33, 0x32, 0x56, 0x61, 0x6c, 0x75, 0x65, 0x52, 0x0c, 0x68, 0x65, 0x6c, 0x70, 0x66,
+	0x6e, 0x74, 0x36, 0x34, 0x56, 0x61, 0x6c, 0x75, 0x65, 0x52, 0x0c, 0x68, 0x65, 0x6c, 0x70, 0x66,
 	0x75, 0x6c, 0x43, 0x6f, 0x75, 0x6e, 0x74, 0x22, 0xe8, 0x01, 0x0a, 0x04, 0x50, 0x6c, 0x61, 0x6e,
 	0x12, 0x0e, 0x0a, 0x02, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x02, 0x69, 0x64,
 	0x12, 0x12, 0x0a, 0x04, 0x6e, 0x61, 0x6d, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x04,
@@ -4846,7 +4846,8 @@ var file_inventory_inventory_proto_goTypes = []any{
 	(*GetCategoryByIDPayload)(nil),         // 35: inventory.GetCategoryByIDPayload
 	(*timestamppb.Timestamp)(nil),          // 36: google.protobuf.Timestamp
 	(*wrapperspb.Int32Value)(nil),          // 37: google.protobuf.Int32Value
-	(*wrapperspb.StringValue)(nil),         // 38: google.protobuf.StringValue
+	(*wrapperspb.Int64Value)(nil),          // 38: google.protobuf.Int64Value
+	(*wrapperspb.StringValue)(nil),         // 39: google.protobuf.StringValue
 }
 var file_inventory_inventory_proto_depIdxs = []int32{
 	1,  // 0: inventory.GetResourceWithIDAndPagination.id:type_name -> inventory.ResourceId
@@ -4868,17 +4869,17 @@ var file_inventory_inventory_proto_depIdxs = []int32{
 	5,  // 16: inventory.InventoryRatingResponse.rater:type_name -> inventory.User
 	27, // 17: inventory.InventoryRatingResponse.replies:type_name -> inventory.InventoryRatingReplyResponse
 	37, // 18: inventory.InventoryRatingResponse.replies_count:type_name -> google.protobuf.Int32Value
-	37, // 19: inventory.InventoryRatingResponse.report_count:type_name -> google.protobuf.Int32Value
-	37, // 20: inventory.InventoryRatingResponse.helpful_count:type_name -> google.protobuf.Int32Value
+	38, // 19: inventory.InventoryRatingResponse.report_count:type_name -> google.protobuf.Int64Value
+	38, // 20: inventory.InventoryRatingResponse.helpful_count:type_name -> google.protobuf.Int64Value
 	36, // 21: inventory.UserRatingResponse.updated_at:type_name -> google.protobuf.Timestamp
 	36, // 22: inventory.UserRatingResponse.created_at:type_name -> google.protobuf.Timestamp
 	5,  // 23: inventory.UserRatingResponse.rater:type_name -> inventory.User
 	37, // 24: inventory.UserRatingResponse.replies_count:type_name -> google.protobuf.Int32Value
-	37, // 25: inventory.UserRatingResponse.report_count:type_name -> google.protobuf.Int32Value
-	37, // 26: inventory.UserRatingResponse.helpful_count:type_name -> google.protobuf.Int32Value
+	38, // 25: inventory.UserRatingResponse.report_count:type_name -> google.protobuf.Int64Value
+	38, // 26: inventory.UserRatingResponse.helpful_count:type_name -> google.protobuf.Int64Value
 	36, // 27: inventory.Plan.created_at:type_name -> google.protobuf.Timestamp
 	36, // 28: inventory.Plan.updated_at:type_name -> google.protobuf.Timestamp
-	38, // 29: inventory.BusinessKyc.cac_number:type_name -> google.protobuf.StringValue
+	39, // 29: inventory.BusinessKyc.cac_number:type_name -> google.protobuf.StringValue
 	5,  // 30: inventory.BusinessKyc.user:type_name -> inventory.User
 	29, // 31: inventory.BusinessKyc.country:type_name -> inventory.Country
 	30, // 32: inventory.BusinessKyc.state:type_name -> inventory.State
@@ -4921,7 +4922,7 @@ var file_inventory_inventory_proto_depIdxs = []int32{
 	31, // 69: inventory.Inventory.lga:type_name -> inventory.LGA
 	33, // 70: inventory.Inventory.images:type_name -> inventory.InventoryImage
 	5,  // 71: inventory.Inventory.user:type_name -> inventory.User
-	38, // 72: inventory.Inventory.tags:type_name -> google.protobuf.StringValue
+	39, // 72: inventory.Inventory.tags:type_name -> google.protobuf.StringValue
 	10, // 73: inventory.Inventory.category:type_name -> inventory.CategoryResponse
 	11, // 74: inventory.Inventory.sub_category:type_name -> inventory.SubCategoryResponse
 	36, // 75: inventory.InventoryImage.created_at:type_name -> google.protobuf.Timestamp
